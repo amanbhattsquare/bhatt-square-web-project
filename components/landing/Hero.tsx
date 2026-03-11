@@ -136,7 +136,7 @@ export function Hero() {
     <section 
         ref={heroRef} 
         onMouseMove={handleMouseMove}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-20 bg-background perspective-1000"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-5 pb-10 bg-background perspective-1000"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -204,13 +204,13 @@ export function Hero() {
                             <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
                             <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
                         </div>
-                        <div className="mx-auto text-xs font-mono text-muted-foreground flex items-center gap-2">
+                        <div className="mx-auto text-xs text-rose-600 font-mono text-muted-foreground flex items-center gap-2">
                             <Command className="w-3 h-3" /> bhatt_square_engine.tsx
                         </div>
                     </div>
 
                     {/* Window Body */}
-                    <div className="p-6 font-mono text-sm leading-relaxed overflow-hidden">
+                    <div className="p-6 font-mono text-sm leading-relaxed overflow-hidden text-white">
                         <div className="flex text-blue-400">
                             <span className="text-purple-400 mr-2">import</span> 
                             {"{ Future }"} 

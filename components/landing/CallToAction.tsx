@@ -13,7 +13,7 @@ export function CallToAction() {
         <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
           Let's discuss how we can help you build the perfect solution for your needs.
         </p>
-        <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-full text-white bg-primary hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-1">
+        <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-full text-black bg-primary hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-1">
           Get in Touch
           <ArrowRight className="ml-2 h-5 w-5" />
         </Link>
