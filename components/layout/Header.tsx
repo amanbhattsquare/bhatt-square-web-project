@@ -4,6 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { useTheme } from "next-themes"
 import { Menu, Moon, Sun, X } from "lucide-react"
+import Image from "next/image"
 
 export function Header() {
   const { theme, setTheme } = useTheme()
@@ -17,9 +18,20 @@ export function Header() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <span className="text-2xl font-extrabold tracking-tight text-foreground">
-                Bhatt<span className="text-primary">Square</span>
-              </span>
+              <Image
+                src="/images/BhattSqureLogo.jpeg"
+                alt="BhattSquare Logo"
+                width={40}
+                height={40}
+                className="h-15 w-15 mr-2 rounded-half"
+              />
+              <div>
+                <span className="text-2xl font-extrabold tracking-tight text-foreground">
+                  BHATT<span className="text-primary"> SQUARE</span>
+                </span>
+                <p className="text-xs font-semibold text-foreground/80">
+Transform Your Digital Vision Into Reality</p>
+              </div>
             </Link>
           </div>
           
