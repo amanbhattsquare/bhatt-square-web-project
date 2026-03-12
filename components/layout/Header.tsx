@@ -19,7 +19,7 @@ export function Header() {
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
               <Image
-                src="/images/BhattSqureLogo.jpeg"
+                src="/images/BhattSqureLogo2.png"
                 alt="BhattSquare Logo"
                 width={40}
                 height={40}
@@ -42,6 +42,9 @@ Transform Your Digital Vision Into Reality</p>
               </Link>
               <Link href="/services" className="text-foreground/80 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
                 Services
+              </Link>
+              <Link href="/products" className="text-foreground/80 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                Our Products
               </Link>
               <Link href="/about" className="text-foreground/80 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
                 About
@@ -87,6 +90,9 @@ Transform Your Digital Vision Into Reality</p>
             </Link>
             <Link href="/services" className="text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium" onClick={toggleMenu}>
               Services
+            </Link>
+            <Link href="/products" className="text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium" onClick={toggleMenu}>
+              Our Products
             </Link>
             <Link href="/about" className="text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium" onClick={toggleMenu}>
               About

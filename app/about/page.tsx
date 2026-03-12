@@ -1,6 +1,7 @@
 "use client"
 
-import { CheckCircle2, Users, Trophy, Target, Lightbulb, Heart, Shield, Zap, Award, TrendingUp, Globe2, ArrowRight } from "lucide-react";
+import { Users, Trophy, Target, Shield, Globe2, ArrowRight, Award, TrendingUp } from "lucide-react";
+import Batch from "../components/Batch";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -89,48 +90,42 @@ function AboutPageContent() {
   return (
     <main className="flex min-h-screen flex-col pt-6">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-b from-muted/30 via-background to-background py-6 md:py-6 overflow-hidden">
-        {/* Enhanced Background decorations */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-rose-500/5 rounded-full blur-3xl"></div>
+      <div className="relative h-[70vh] md:h-[80vh] flex items-center justify-center text-center text-white overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/about-team.png')" }}
+        ></div>
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
 
-        <div className="container mx-auto px-4 text-center relative z-10">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 via-indigo-500/10 to-rose-500/10 border border-primary/20 text-primary text-sm font-semibold mb-6 backdrop-blur-sm">
-            <Heart className="w-4 h-4" />
-            OUR STORY
-          </div>
+        <div className="relative z-10 p-4">
+          <Batch title="OUR STORY" />
 
-          {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight text-shadow-lg">
             Building the <span className="text-primary">Digital Future</span>
           </h1>
 
-          {/* Description */}
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-12">
+          <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed mb-12">
             We're a team of passionate innovators, engineers, and designers dedicated to transforming ambitious ideas into production-ready digital products that drive real business impact.
           </p>
-
-          {/* Quick Stats */}
+{/* 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-12">
-            <div className="p-6 rounded-2xl bg-card/80 backdrop-blur-sm border border-border hover:border-primary/50 transition-all hover:shadow-lg">
+            <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:border-primary/50 transition-all hover:shadow-lg">
               <div className="text-3xl md:text-4xl font-bold text-primary mb-2">200+</div>
-              <div className="text-sm text-muted-foreground">Projects Delivered</div>
+              <div className="text-sm">Projects Delivered</div>
             </div>
-            <div className="p-6 rounded-2xl bg-card/80 backdrop-blur-sm border border-border hover:border-primary/50 transition-all hover:shadow-lg">
+            <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:border-primary/50 transition-all hover:shadow-lg">
               <div className="text-3xl md:text-4xl font-bold text-primary mb-2">150+</div>
-              <div className="text-sm text-muted-foreground">Happy Clients</div>
+              <div className="text-sm">Happy Clients</div>
             </div>
-            <div className="p-6 rounded-2xl bg-card/80 backdrop-blur-sm border border-border hover:border-primary/50 transition-all hover:shadow-lg">
+            <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:border-primary/50 transition-all hover:shadow-lg">
               <div className="text-3xl md:text-4xl font-bold text-primary mb-2">5+</div>
-              <div className="text-sm text-muted-foreground">Years Experience</div>
+              <div className="text-sm">Years Experience</div>
             </div>
-            <div className="p-6 rounded-2xl bg-card/80 backdrop-blur-sm border border-border hover:border-primary/50 transition-all hover:shadow-lg">
+            <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:border-primary/50 transition-all hover:shadow-lg">
               <div className="text-3xl md:text-4xl font-bold text-primary mb-2">98%</div>
-              <div className="text-sm text-muted-foreground">Success Rate</div>
+              <div className="text-sm">Success Rate</div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 

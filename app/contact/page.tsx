@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { ContactForm } from "@/components/contact/ContactForm";
+import Batch from "../components/Batch";
 
 export const metadata: Metadata = {
   title: "Contact Us | Bhatt Square Pvt. Ltd.",
@@ -10,10 +11,19 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main className="flex min-h-screen flex-col pt-16">
-       <div className="bg-muted/30 py-16 md:py-24">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+      <div className="relative h-[50vh] md:h-[60vh] flex items-center justify-center text-center text-white overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/about-team.png')" }}
+        ></div>
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+        <div className="relative z-10 p-4">
+          <Batch title="GET IN TOUCH" />
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight text-shadow-lg">
+            Contact Us
+          </h1>
+          <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
             Have a project in mind? We'd love to hear from you.
           </p>
         </div>
