@@ -1,136 +1,140 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { Lightbulb, Palette, Code, Rocket } from "lucide-react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { motion } from "framer-motion"
+import { Check, ClipboardList, Code, Palette, Rocket } from "lucide-react"
 
 const processSteps = [
   {
-    icon: Lightbulb,
-    title: "Discovery",
+    icon: ClipboardList,
+    title: "Discovery & Strategy",
     description: "We dive deep into your vision, goals, and requirements to craft the perfect strategy.",
-    color: "from-yellow-500 to-orange-500"
+    color: "text-purple-500",
+    bgColor: "bg-purple-500/10",
+    borderColor: "border-purple-500/20"
   },
   {
     icon: Palette,
-    title: "Design",
+    title: "UI/UX Design",
     description: "Our designers create stunning, user-centric interfaces that captivate and convert.",
-    color: "from-purple-500 to-pink-500"
+    color: "text-sky-500",
+    bgColor: "bg-sky-500/10",
+    borderColor: "border-sky-500/20"
   },
   {
     icon: Code,
-    title: "Development",
+    title: "Development & Testing",
     description: "Clean, scalable code built with modern technologies and best practices.",
-    color: "from-blue-500 to-cyan-500"
+    color: "text-emerald-500",
+    bgColor: "bg-emerald-500/10",
+    borderColor: "border-emerald-500/20"
   },
   {
     icon: Rocket,
-    title: "Launch",
+    title: "Deployment & Launch",
     description: "Seamless deployment, testing, and ongoing support to ensure your success.",
-    color: "from-green-500 to-emerald-500"
+    color: "text-rose-500",
+    bgColor: "bg-rose-500/10",
+    borderColor: "border-rose-500/20"
   }
 ]
 
 export function ProcessTimeline() {
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  }
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
-    
-    const ctx = gsap.context(() => {
-      gsap.fromTo(".process-step",
-        { x: -50, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 75%",
-          }
-        }
-      )
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  }
 
-      gsap.fromTo(".timeline-line",
-        { scaleY: 0 },
-        {
-          scaleY: 1,
-          duration: 1.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 75%",
-          }
-        }
-      )
-    }, sectionRef)
-
-    return () => ctx.revert()
-  }, [])
+  const lineVariants = {
+    hidden: { scaleY: 0 },
+    visible: {
+      scaleY: 1,
+      transition: {
+        duration: 1,
+        ease: "easeOut",
+        delay: 0.5
+      }
+    }
+  }
 
   return (
-    <section ref={sectionRef} className="py-6 bg-background relative overflow-hidden">
+    <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Our <span className="text-primary">Process</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A proven methodology that transforms ideas into exceptional digital products.
-          </p>
+        <div className="text-center mb-20">
+          <motion.h2
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="text-4xl md:text-5xl font-bold mb-4"
+          >
+            Our Streamlined <span className="text-primary">Process</span>
+          </motion.h2>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="text-lg text-muted-foreground max-w-3xl mx-auto"
+          >
+            From initial idea to final launch, we follow a structured and transparent process to ensure your project's success.
+          </motion.p>
         </div>
 
-        <div className="max-w-5xl mx-auto relative">
-          {/* Timeline line - hidden on mobile */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-border timeline-line origin-top"></div>
-
-          <div className="space-y-12 md:space-y-16">
+        <div className="relative">
+          <motion.div 
+            className="absolute left-4 md:left-1/2 top-12 bottom-12 w-1 bg-border/50 rounded-full md:-translate-x-1/2"
+            variants={lineVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            style={{ originY: 0 }}
+          />
+          
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16"
+          >
             {processSteps.map((step, index) => (
-              <div
+              <motion.div
                 key={index}
-                className={`process-step flex flex-col md:flex-row gap-8 items-center ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                }`}
+                variants={itemVariants}
+                whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                className="relative flex flex-col items-center md:items-start text-center md:text-left"
               >
-                {/* Content */}
-                <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                  <div className="inline-block p-8 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group">
-                    <h3 className="text-2xl font-bold mb-3 flex items-center gap-3 group-hover:text-primary transition-colors">
-                      {index % 2 === 0 ? (
-                        <>
-                          <span>{step.title}</span>
-                          <div className={`p-2 rounded-lg bg-gradient-to-br ${step.color}`}>
-                            <step.icon className="w-5 h-5 text-white" />
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          <div className={`p-2 rounded-lg bg-gradient-to-br ${step.color}`}>
-                            <step.icon className="w-5 h-5 text-white" />
-                          </div>
-                          <span>{step.title}</span>
-                        </>
-                      )}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {step.description}
-                    </p>
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background hidden lg:block" />
+                
+                <div className="flex items-center gap-4 mb-4">
+                  <div className={`w-16 h-16 rounded-full ${step.bgColor} border-2 ${step.borderColor} flex items-center justify-center ${step.color}`}>
+                    <step.icon className="w-8 h-8" />
                   </div>
+                  <span className="text-5xl font-bold text-muted-foreground/20">
+                    0{index + 1}
+                  </span>
                 </div>
-
-                {/* Center dot */}
-                <div className="hidden md:flex w-12 h-12 rounded-full bg-primary border-4 border-background shadow-lg items-center justify-center relative z-10">
-                  <div className="w-3 h-3 rounded-full bg-white animate-pulse"></div>
-                </div>
-
-                {/* Spacer for alternating layout */}
-                <div className="hidden md:block flex-1"></div>
-              </div>
+                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                <p className="text-muted-foreground text-sm">{step.description}</p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

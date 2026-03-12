@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Facebook, Instagram, Linkedin, Twitter, Mail, MapPin, Phone, ArrowUpRight } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Twitter, Mail, MapPin, Phone, ArrowUpRight, Heart, Code2 } from "lucide-react"
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,9 +13,9 @@ export function Footer() {
           
           {/* Brand Column */}
           <div className="space-y-6">
-            <Link href="/" className="inline-block">
-               <span className="text-2xl font-extrabold tracking-tight text-foreground">
-                Bhatt<span className="text-primary">Square</span>
+            <Link href="/" className="inline-block group">
+              <span className="text-2xl font-extrabold tracking-tight text-foreground">
+                Bhatt<span className="text-primary group-hover:underline decoration-primary underline-offset-4">Square</span>
               </span>
             </Link>
             <p className="text-muted-foreground leading-relaxed">
@@ -74,7 +74,11 @@ export function Footer() {
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground text-center md:text-left">
             &copy; {currentYear} Bhatt Square Pvt. Ltd. All rights reserved.
+            <Link href="https://www.linkedin.com/in/amanktyr" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors ml-2" aria-label="Developed by Aman Ktyr, a software developer. View profile on LinkedIn. developer Aman Ktyr" title="Developed by Aman Ktyr, a software developer.">
+              <Code2 className="w-4 h-4 text-primary/60 group-hover:text-primary group-hover:rotate-3 transition-all inline" />
+            </Link>
           </p>
+
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
              <Link href="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
              <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
@@ -88,7 +92,7 @@ export function Footer() {
 
 function SocialLink({ href, icon, label }: { href: string, icon: React.ReactNode, label: string }) {
   return (
-    <Link href={href} className="w-10 h-10 flex items-center justify-center rounded-full bg-muted/50 text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300" aria-label={label}>
+    <Link href={href} className="w-10 h-10 flex items-center justify-center rounded-full bg-muted/50 text-muted-foreground hover:bg-primary/10 hover:text-primary hover:scale-110 transition-all duration-300" aria-label={label}>
       {icon}
     </Link>
   )
