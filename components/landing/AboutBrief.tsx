@@ -49,7 +49,7 @@ export function AboutBrief() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           <div className="about-content space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold">
+            <h2 className="section-heading">
               Why Choose <span className="text-primary">Bhatt Square?</span>
             </h2>
             <p className="text-lg text-muted-foreground">

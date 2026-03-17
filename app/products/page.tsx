@@ -1,6 +1,6 @@
 
 import { Metadata } from "next";
-import { Briefcase, Dumbbell, ShoppingCart, TrendingUp, Users, BrainCircuit, Building, GraduationCap, Home } from "lucide-react";
+import { Briefcase, Dumbbell, ShoppingCart, TrendingUp, Users, BrainCircuit, Building, GraduationCap, Home, ArrowRight } from "lucide-react";
 import Batch from "../components/Batch";
 
 export const metadata: Metadata = {
@@ -105,9 +105,11 @@ export default function ProductsPage() {
                 </div>
                 <h3 className="text-2xl font-bold mt-6 mb-3">{product.title}</h3>
                 <p className="text-muted-foreground flex-grow">{product.description}</p>
-                <a href="#" className="mt-6 text-primary font-semibold hover:underline">
-                  Learn More &rarr;
-                </a>
+                <div className="mt-8">
+                  <a href="#" className="btn-secondary">
+                    Learn More <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             ))}
           </div>

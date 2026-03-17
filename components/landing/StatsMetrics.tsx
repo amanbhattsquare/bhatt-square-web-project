@@ -64,11 +64,11 @@ export function StatsMetrics() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent"></div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <div className="text-center mb-16">
+          <h2 className="section-heading">
             Proven Track Record
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="section-subheading">
             Numbers that speak for themselves. Our commitment to excellence drives measurable results.
           </p>
         </div>

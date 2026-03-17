@@ -48,25 +48,25 @@ export function ProcessTimeline() {
     },
   }
 
-  const itemVariants = {
+  const itemVariants: import("framer-motion").Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
         duration: 0.5,
-        ease: "easeOut",
+        ease: [0.4, 0, 0.2, 1] as [number, number, number, number],
       },
     },
   }
 
-  const lineVariants = {
+  const lineVariants: import("framer-motion").Variants = {
     hidden: { scaleY: 0 },
     visible: {
       scaleY: 1,
       transition: {
         duration: 1,
-        ease: "easeOut",
+        ease: [0.4, 0, 0.2, 1] as [number, number, number, number],
         delay: 0.5
       }
     }
@@ -81,7 +81,7 @@ export function ProcessTimeline() {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.5 }}
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="section-heading"
           >
             Our Streamlined <span className="text-primary">Process</span>
           </motion.h2>
@@ -90,7 +90,7 @@ export function ProcessTimeline() {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.5 }}
-            className="text-lg text-muted-foreground max-w-3xl mx-auto"
+            className="section-subheading"
           >
             From initial idea to final launch, we follow a structured and transparent process to ensure your project's success.
           </motion.p>

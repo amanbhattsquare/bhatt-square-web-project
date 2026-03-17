@@ -174,13 +174,10 @@ export function Hero() {
                 </p>
 
                 <div className="hero-btns flex flex-wrap gap-4 pt-2">
-                    <Link ref={btnRef} href="/contact" className="group relative px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full overflow-hidden transition-all shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5">
-                        <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer"></div>
-                        <span className="relative flex items-center z-10">
-                            Start a Project <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </span>
+                    <Link ref={btnRef} href="/contact" className="btn-primary">
+                        Start a Project <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
-                    <Link href="/services" className="px-8 py-4 rounded-full border border-border bg-background/50 hover:bg-muted font-medium transition-all backdrop-blur-md hover:border-primary/50 text-foreground">
+                    <Link href="/services" className="btn-secondary">
                         Our Expertise
                     </Link>
                 </div>

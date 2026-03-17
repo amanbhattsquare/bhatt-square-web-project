@@ -8,8 +8,18 @@ export default function NotFound() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const glitchRef = useRef<HTMLDivElement>(null);
+  const [particles, setParticles] = useState<{ top: string; left: string; delay: string; duration: string }[]>([]);
 
   useEffect(() => {
+    // Generate particles only on the client
+    const newParticles = [...Array(30)].map(() => ({
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 5}s`,
+      duration: `${5 + Math.random() * 5}s`
+    }));
+    setParticles(newParticles);
+
     // Mouse move parallax effect
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
@@ -47,15 +57,15 @@ export default function NotFound() {
         </div>
 
         {/* Floating Particles */}
-        {[...Array(30)].map((_, i) => (
+        {particles.map((particle, i) => (
           <div
             key={i}
             className="absolute w-1 h-1 bg-primary/30 rounded-full animate-float"
             style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${5 + Math.random() * 5}s`
+              top: particle.top,
+              left: particle.left,
+              animationDelay: particle.delay,
+              animationDuration: particle.duration
             }}
           />
         ))}

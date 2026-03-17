@@ -55,15 +55,18 @@ Transform Your Digital Vision Into Reality</p>
             </div>
           </div>
 
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center space-x-4">
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-full hover:bg-muted transition-colors"
+              className="p-2 rounded-full hover:bg-muted transition-colors mr-2"
               aria-label="Toggle theme"
             >
               <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
             </button>
+            <Link href="/contact" className="btn-primary text-sm py-2 px-6">
+              Contact Us
+            </Link>
           </div>
 
           <div className="-mr-2 flex md:hidden">

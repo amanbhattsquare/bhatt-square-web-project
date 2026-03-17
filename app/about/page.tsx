@@ -134,7 +134,7 @@ function AboutPageContent() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold">
+              <h2 className="section-heading">
                 Who We Are
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
@@ -184,10 +184,10 @@ function AboutPageContent() {
       <section ref={valuesRef} className="py-6 bg-muted/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            <h2 className="section-heading">
               Our Core <span className="text-primary">Values</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="section-subheading">
               The principles that guide everything we do and shape our culture.
             </p>
           </div>
@@ -221,10 +221,10 @@ function AboutPageContent() {
       <section ref={timelineRef} className="py-6 relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            <h2 className="section-heading">
               Our <span className="text-primary">Journey</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="section-subheading">
               Key milestones that shaped our growth and success story.
             </p>
           </div>
@@ -282,9 +282,9 @@ function AboutPageContent() {
 
       {/* CTA Section */}
       <section className="py-6 bg-gradient-to-b from-background to-muted/20">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-3xl mx-auto space-y-6">
-            <h2 className="text-3xl md:text-5xl font-bold">
+        <div className="container mx-auto px-4 flex flex-col items-center text-center">
+          <div className="max-w-3xl mx-auto space-y-6 flex flex-col items-center">
+            <h2 className="section-heading">
               Ready to Build Something <span className="text-primary">Amazing?</span>
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -293,14 +293,14 @@ function AboutPageContent() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 transition-all"
+                className="btn-primary"
               >
                 Start a Conversation
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2 px-8 py-4 border-2 border-border hover:border-primary/50 rounded-full font-semibold hover:bg-muted transition-all"
+                className="btn-secondary"
               >
                 View Our Services
               </Link>

@@ -1,57 +1,75 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-outfit);
   --font-mono: var(--font-geist-mono);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a; /* Slate 900 */
+  --background: #eddcc631;
+  --foreground: #0f172a;
 
-  --primary: #dc2626; /* Red 600 */
+  --primary: #BF4646; /* Rose 600 */
   --primary-foreground: #ffffff;
 
-  --secondary: #f1f5f9; /* Slate 100 */
-  --secondary-foreground: #1e293b; /* Slate 800 */
+  --secondary: #f8fafc;
+  --secondary-foreground: #0f172a;
 
-  --muted: #f1f5f9; /* Slate 100 */
-  --muted-foreground: #64748b; /* Slate 500 */
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
 
-  --accent: #fef2f2; /* Red 50 */
-  --accent-foreground: #991b1b; /* Red 800 */
+  --accent: #fff1f2;
+  --accent-foreground: #be123c;
 
   --card: #ffffff;
   --card-foreground: #0f172a;
 
-  --border: #e2e8f0; /* Slate 200 */
+  --border: #e2e8f0;
   --input: #e2e8f0;
-  --ring: #dc2626; /* Red 600 */
+  --ring: #e11d48;
+
+  --radius: 0.75rem;
 }
 
-/* Dark mode overrides */
 .dark {
-  --background: #020617; /* Slate 950 */
-  --foreground: #f8fafc; /* Slate 50 */
+  --background: #020617;
+  --foreground: #f8fafc;
 
-  --primary: #ef4444; /* Red 500 */
+  --primary: #f43f5e; /* Rose 500 */
   --primary-foreground: #ffffff;
 
-  --secondary: #1e293b; /* Slate 800 */
+  --secondary: #1e293b;
   --secondary-foreground: #f8fafc;
 
-  --muted: #1e293b; /* Slate 800 */
-  --muted-foreground: #94a3b8; /* Slate 400 */
+  --muted: #0f172a;
+  --muted-foreground: #94a3b8;
 
-  --accent: #450a0a; /* Red 950 */
-  --accent-foreground: #fca5a5; /* Red 300 */
+  --accent: #4c0519;
+  --accent-foreground: #fda4af;
 
-  --card: #0f172a; /* Slate 900 */
+  --card: #0f172a;
   --card-foreground: #f8fafc;
 
-  --border: #1e293b; /* Slate 800 */
+  --border: #1e293b;
   --input: #1e293b;
-  --ring: #ef4444;
+  --ring: #f43f5e;
 }
 
 body {
@@ -61,6 +79,30 @@ body {
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.section-heading {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-size: clamp(1.875rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.section-subheading {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+  line-height: 1.7;
 }
 
 /* Custom Utilities for professional look */
@@ -119,11 +161,48 @@ body {
   animation: shimmer 1.5s infinite;
 }
 
-/* 3D Transform Utilities */
-.perspective-1000 {
-  perspective: 1000px;
+/* Modern Button Utilities */
+.btn-primary {
+  @apply relative px-5 py-2 bg-primary text-primary-foreground font-semibold rounded-full 
+         overflow-hidden transition-all duration-300 shadow-lg shadow-primary/20
+         hover:shadow-primary/40 hover:-translate-y-1 active:scale-95 inline-flex items-center justify-center gap-2 text-sm md:text-base;
 }
 
-.transform-style-3d {
-  transform-style: preserve-3d;
+.btn-primary::after {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent 
+         -translate-x-full transition-transform duration-700;
 }
+
+.btn-primary:hover::after {
+  @apply translate-x-full;
+}
+
+.btn-secondary {
+  @apply relative px-5 py-2 bg-background/50 text-foreground font-semibold rounded-full 
+         border border-border backdrop-blur-md transition-all duration-300
+         hover:border-primary/50 hover:bg-muted hover:-translate-y-1 active:scale-95 inline-flex items-center justify-center gap-2 text-sm md:text-base;
+}
+
+.btn-outline {
+  @apply relative px-5 py-2 bg-transparent text-foreground font-semibold rounded-full 
+         border-2 border-primary/20 transition-all duration-300
+         hover:border-primary hover:text-primary hover:-translate-y-1 active:scale-95 inline-flex items-center justify-center gap-2 text-sm md:text-base;
+}
+
+.btn-glass {
+  @apply relative px-5 py-2 bg-white/10 dark:bg-black/20 text-foreground font-semibold rounded-full 
+         border border-white/20 dark:border-white/5 backdrop-blur-xl transition-all duration-300
+         hover:bg-white/20 dark:hover:bg-white/10 hover:border-white/40 dark:hover:border-white/20
+         hover:-translate-y-1 active:scale-95 shadow-xl inline-flex items-center justify-center gap-2 text-sm md:text-base;
+}
+
+/* Red Accent Utility */
+.text-red-glow {
+  text-shadow: 0 0 15px rgba(225, 29, 72, 0.4);
+}
+
+.dark .text-red-glow {
+  text-shadow: 0 0 20px rgba(244, 63, 94, 0.6);
+}
+

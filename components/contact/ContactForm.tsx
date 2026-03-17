@@ -122,7 +122,7 @@ export function ContactForm() {
                 </label>
             </div>
             {errors.privacy && <p className="text-red-500 text-xs">{errors.privacy}</p>}
-            <button type="submit" disabled={isSubmitting} className="w-full px-6 py-3 bg-primary text-black font-medium rounded-md hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 disabled:bg-gray-400 disabled:cursor-not-allowed">
+            <button type="submit" disabled={isSubmitting} className="btn-primary w-full">
                 {isSubmitting ? 'Submitting...' : 'Send Message'}
             </button>
             {submitStatus === 'success' && 

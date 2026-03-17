@@ -66,10 +66,10 @@ export function ProjectsShowcase() {
     <section ref={sectionRef} className="py-6 bg-muted/20 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="section-heading">
             Featured <span className="text-primary">Projects</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="section-subheading">
             Explore our portfolio of successful projects that showcase our expertise and commitment to excellence.
           </p>
         </div>
@@ -91,11 +91,9 @@ export function ProjectsShowcase() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   
                   {/* Hover overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div
-                      className="p-3 rounded-full bg-white/90 hover:bg-white transition-colors"
-                    >
-                      <ExternalLink className="w-5 h-5 text-foreground" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="btn-glass text-sm py-2 px-5 scale-90 group-hover:scale-100 transition-transform duration-300">
+                      View Project <ExternalLink className="w-4 h-4 ml-1" />
                     </div>
                   </div>
                 </div>

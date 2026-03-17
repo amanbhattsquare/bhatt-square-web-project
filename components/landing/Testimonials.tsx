@@ -55,8 +55,8 @@ export function Testimonials() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Client Success Stories</h2>
-          <p className="text-lg text-muted-foreground">
+          <h2 className="section-heading">Client Success Stories</h2>
+          <p className="section-subheading">
             Don't just take our word for it. Here's what our partners have to say.
           </p>
         </div>

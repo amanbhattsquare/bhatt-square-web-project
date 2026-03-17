@@ -67,10 +67,10 @@ export function FAQ() {
     <section ref={sectionRef} className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="section-heading">
             Frequently Asked <span className="text-primary">Questions</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="section-subheading">
             Got questions? We've got answers. Find everything you need to know about working with us.
           </p>
         </div>
