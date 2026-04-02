@@ -1,6 +1,6 @@
 "use client"
 
-import { Users, Trophy, Target, Shield, Globe2, ArrowRight, Award, TrendingUp } from "lucide-react";
+import { Users, Trophy, Target, Shield, Globe2, ArrowRight, Award, TrendingUp, Linkedin, Twitter, Github, Code2, Layers, Smartphone, BarChart3 } from "lucide-react";
 import Batch from "../components/Batch";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
@@ -41,14 +41,57 @@ const achievements = [
   { year: "2024", milestone: "International Expansion", description: "Opened offices in 3 countries, serving global enterprises" }
 ];
 
+const teamMembers = [
+  {
+    name: "Arjun Bhatt",
+    role: "Founder & CEO",
+    bio: "Visionary technologist with 10+ years building scalable software. Former lead engineer at Fortune 500 companies, driving product strategy and company direction.",
+    expertise: ["Product Strategy", "Architecture", "Team Leadership"],
+    icon: Layers,
+    gradient: "from-primary/15 to-rose-500/10",
+    accent: "text-primary",
+    social: { linkedin: "#", twitter: "#", github: "#" }
+  },
+  {
+    name: "Priya Sharma",
+    role: "CTO & Lead Architect",
+    bio: "Full-stack architect specializing in cloud-native systems and microservices. Passionate about building resilient, high-performance infrastructure.",
+    expertise: ["Cloud Architecture", "DevOps", "Backend Systems"],
+    icon: Code2,
+    gradient: "from-indigo-500/15 to-purple-500/10",
+    accent: "text-indigo-500",
+    social: { linkedin: "#", twitter: "#", github: "#" }
+  },
+  {
+    name: "Rohan Mehta",
+    role: "Head of Design",
+    bio: "Award-winning UX/UI designer with a deep understanding of user psychology. Transforms complex workflows into intuitive, beautiful digital experiences.",
+    expertise: ["UX Research", "UI Design", "Design Systems"],
+    icon: Smartphone,
+    gradient: "from-cyan-500/15 to-blue-500/10",
+    accent: "text-cyan-600",
+    social: { linkedin: "#", twitter: "#", github: "#" }
+  },
+  {
+    name: "Kiran Patel",
+    role: "Head of Growth",
+    bio: "Data-driven growth strategist who has scaled multiple B2B SaaS products from 0 to $10M ARR. Focused on product-led growth and GTM strategies.",
+    expertise: ["Growth Strategy", "Analytics", "B2B SaaS"],
+    icon: BarChart3,
+    gradient: "from-emerald-500/15 to-green-500/10",
+    accent: "text-emerald-600",
+    social: { linkedin: "#", twitter: "#", github: "#" }
+  }
+];
+
 function AboutPageContent() {
   const valuesRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
+  const teamRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Animate values cards
     if (valuesRef.current) {
       gsap.fromTo(
         ".value-card",
@@ -67,7 +110,6 @@ function AboutPageContent() {
       );
     }
 
-    // Animate timeline items
     if (timelineRef.current) {
       gsap.fromTo(
         ".timeline-item",
@@ -81,6 +123,24 @@ function AboutPageContent() {
           scrollTrigger: {
             trigger: timelineRef.current,
             start: "top 75%",
+          }
+        }
+      );
+    }
+
+    if (teamRef.current) {
+      gsap.fromTo(
+        ".team-card",
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          stagger: 0.12,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: teamRef.current,
+            start: "top 80%",
           }
         }
       );
@@ -107,32 +167,13 @@ function AboutPageContent() {
           <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed mb-12">
             We're a team of passionate innovators, engineers, and designers dedicated to transforming ambitious ideas into production-ready digital products that drive real business impact.
           </p>
-{/* 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-12">
-            <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:border-primary/50 transition-all hover:shadow-lg">
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">200+</div>
-              <div className="text-sm">Projects Delivered</div>
-            </div>
-            <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:border-primary/50 transition-all hover:shadow-lg">
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">150+</div>
-              <div className="text-sm">Happy Clients</div>
-            </div>
-            <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:border-primary/50 transition-all hover:shadow-lg">
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">5+</div>
-              <div className="text-sm">Years Experience</div>
-            </div>
-            <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:border-primary/50 transition-all hover:shadow-lg">
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">98%</div>
-              <div className="text-sm">Success Rate</div>
-            </div>
-          </div> */}
         </div>
       </div>
 
       {/* Company Story */}
-      <section className="py-6">
+      <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <h2 className="section-heading">
                 Who We Are
@@ -149,27 +190,29 @@ function AboutPageContent() {
                 </p>
               </div>
               
-              <div className="grid grid-cols-3 gap-6 pt-6">
+              <div className="grid grid-cols-3 gap-6 pt-6 border-t border-border">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary mb-1">200+</div>
-                  <div className="text-sm text-muted-foreground">Projects Delivered</div>
+                  <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Projects Delivered</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary mb-1">150+</div>
-                  <div className="text-sm text-muted-foreground">Happy Clients</div>
+                  <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Happy Clients</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary mb-1">98%</div>
-                  <div className="text-sm text-muted-foreground">Success Rate</div>
+                  <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Success Rate</div>
                 </div>
               </div>
             </div>
 
             <div className="relative">
-              <div className="aspect-square lg:aspect-[4/3] bg-gradient-to-br from-primary/20 via-indigo-500/20 to-rose-500/20 rounded-3xl overflow-hidden relative">
-                <div className="absolute inset-0 flex items-center justify-center bg-card/80 backdrop-blur-sm">
+              <div className="aspect-square lg:aspect-[4/3] bg-gradient-to-br from-primary/10 via-indigo-500/10 to-rose-500/10 rounded-3xl overflow-hidden relative border border-border">
+                <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center p-8">
-                    <Globe2 className="w-24 h-24 text-primary mx-auto mb-4" />
+                    <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                      <Globe2 className="w-12 h-12 text-primary" />
+                    </div>
                     <h3 className="text-2xl font-bold mb-2">Global Impact</h3>
                     <p className="text-muted-foreground">Serving clients across 3 continents</p>
                   </div>
@@ -181,7 +224,7 @@ function AboutPageContent() {
       </section>
 
       {/* Core Values */}
-      <section ref={valuesRef} className="py-6 bg-muted/20">
+      <section ref={valuesRef} className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="section-heading">
@@ -192,22 +235,20 @@ function AboutPageContent() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {coreValues.map((value, index) => (
               <div
                 key={index}
-                className="value-card group relative p-8 rounded-3xl bg-card/80 backdrop-blur-sm border-2 border-border hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1"
+                className="value-card group relative p-8 rounded-2xl bg-card border border-border hover:border-primary/40 transition-all duration-400 hover:shadow-lg hover:-translate-y-1"
               >
-                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                
                 <div className="relative z-10">
-                  <div className={`mb-6 p-4 rounded-2xl bg-gradient-to-br ${value.color} w-fit shadow-lg`}>
-                    <value.icon className="w-8 h-8 text-white" />
+                  <div className={`mb-6 p-4 rounded-xl bg-gradient-to-br ${value.color} w-fit shadow-md`}>
+                    <value.icon className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
                     {value.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed text-sm">
                     {value.description}
                   </p>
                 </div>
@@ -217,8 +258,121 @@ function AboutPageContent() {
         </div>
       </section>
 
-      {/* Timeline/Milestones - Redesigned */}
-      <section ref={timelineRef} className="py-6 relative overflow-hidden">
+      {/* Team Section */}
+      <section ref={teamRef} className="py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="section-heading">
+              Meet the <span className="text-primary">Team</span>
+            </h2>
+            <p className="section-subheading">
+              A collective of industry veterans, creative builders, and strategic thinkers united by a passion for impactful technology.
+            </p>
+          </div>
+
+          {/* Team Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {teamMembers.map((member, index) => (
+              <div
+                key={index}
+                className="team-card group relative flex flex-col rounded-2xl bg-card border border-border overflow-hidden hover:border-primary/40 hover:shadow-xl hover:-translate-y-2 transition-all duration-400"
+              >
+                {/* Gradient Header */}
+                <div className={`relative h-36 bg-gradient-to-br ${member.gradient} flex items-center justify-center`}>
+                  {/* Decorative grid pattern */}
+                  <div className="absolute inset-0 opacity-[0.04]" style={{
+                    backgroundImage: "radial-gradient(circle, currentColor 1px, transparent 1px)",
+                    backgroundSize: "18px 18px"
+                  }}></div>
+                  <div className="relative w-20 h-20 rounded-2xl bg-background/80 border border-border/50 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-300">
+                    <member.icon className={`w-9 h-9 ${member.accent}`} />
+                  </div>
+                  {/* Index badge */}
+                  <div className="absolute top-3 right-3 text-xs font-bold text-muted-foreground/60 font-mono">
+                    0{index + 1}
+                  </div>
+                </div>
+
+                {/* Card Body */}
+                <div className="flex flex-col flex-1 p-5">
+                  <div className="mb-4">
+                    <h3 className="text-base font-bold text-foreground mb-0.5">{member.name}</h3>
+                    <p className={`text-xs font-semibold uppercase tracking-widest ${member.accent} mb-3`}>
+                      {member.role}
+                    </p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {member.bio}
+                    </p>
+                  </div>
+
+                  {/* Expertise Tags */}
+                  <div className="mt-auto pt-4 border-t border-border space-y-2">
+                    <div className="flex flex-wrap gap-1.5">
+                      {member.expertise.map((skill, i) => (
+                        <span
+                          key={i}
+                          className="inline-block text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-md bg-muted text-muted-foreground border border-border"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Social Links */}
+                  <div className="flex items-center gap-2 mt-4">
+                    <a
+                      href={member.social.linkedin}
+                      className="p-1.5 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/8 transition-all duration-200"
+                      aria-label={`${member.name} LinkedIn`}
+                    >
+                      <Linkedin className="w-3.5 h-3.5" />
+                    </a>
+                    <a
+                      href={member.social.twitter}
+                      className="p-1.5 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/8 transition-all duration-200"
+                      aria-label={`${member.name} Twitter`}
+                    >
+                      <Twitter className="w-3.5 h-3.5" />
+                    </a>
+                    <a
+                      href={member.social.github}
+                      className="p-1.5 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/8 transition-all duration-200"
+                      aria-label={`${member.name} GitHub`}
+                    >
+                      <Github className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Team Culture Banner */}
+          <div className="mt-16 rounded-2xl bg-gradient-to-r from-primary/8 via-indigo-500/5 to-primary/8 border border-primary/15 p-8 md:p-12 text-center">
+            <div className="max-w-2xl mx-auto">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-widest mb-6">
+                <Users className="w-3.5 h-3.5" />
+                Join Our Team
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                We're Always Looking for <span className="text-primary">Exceptional Talent</span>
+              </h3>
+              <p className="text-muted-foreground mb-8 leading-relaxed">
+                We believe great products are built by great people. If you're passionate about building impactful technology and want to work in a culture of excellence, we'd love to hear from you.
+              </p>
+              <Link href="/contact" className="btn-primary">
+                View Open Roles
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline/Milestones */}
+      <section ref={timelineRef} className="py-20 bg-muted/30 relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="section-heading">
@@ -230,29 +384,22 @@ function AboutPageContent() {
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {achievements.map((item, index) => (
                 <div key={index} className="timeline-item group relative">
-                  {/* Connecting Line (Desktop) */}
                   {index < achievements.length - 1 && (
                     <div className="hidden lg:block absolute top-8 left-1/2 w-full h-0.5 bg-gradient-to-r from-primary/20 to-transparent z-0 group-hover:from-primary/50 transition-colors duration-500">
                       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary/20 group-hover:bg-primary transition-colors"></div>
                     </div>
                   )}
                   
-                  {/* Card Content */}
-                  <div className="relative z-10 h-full p-8 rounded-3xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group-hover:bg-muted/50">
+                  <div className="relative z-10 h-full p-7 rounded-2xl bg-card border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                     <div className="flex flex-col h-full">
-                      {/* Year */}
-                      <span className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-primary/80 to-primary/20 mb-6 group-hover:scale-110 origin-left transition-transform duration-500">
+                      <span className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-primary/80 to-primary/30 mb-5">
                         {item.year}
                       </span>
-                      
-                      {/* Divider */}
-                      <div className="w-12 h-1 bg-primary/20 rounded-full mb-6 group-hover:w-20 group-hover:bg-primary transition-all duration-300"></div>
-
-                      {/* Details */}
-                      <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                      <div className="w-10 h-0.5 bg-primary/20 rounded-full mb-5 group-hover:w-16 group-hover:bg-primary transition-all duration-300"></div>
+                      <h3 className="text-base font-bold mb-2 group-hover:text-primary transition-colors">
                         {item.milestone}
                       </h3>
                       <p className="text-muted-foreground text-sm leading-relaxed">
@@ -260,19 +407,17 @@ function AboutPageContent() {
                       </p>
                     </div>
 
-                    {/* Decorative Corner */}
                     <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                       <TrendingUp className="w-5 h-5 text-primary" />
+                       <TrendingUp className="w-4 h-4 text-primary" />
                     </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Achievement summary */}
-            <div className="mt-16 text-center">
-              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-muted border border-border">
-                <Award className="w-5 h-5 text-primary" />
+            <div className="mt-12 text-center">
+              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-card border border-border">
+                <Award className="w-4 h-4 text-primary" />
                 <span className="font-medium text-sm">Still Growing Strong & Expanding Globally</span>
               </div>
             </div>
@@ -281,27 +426,21 @@ function AboutPageContent() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-6 bg-gradient-to-b from-background to-muted/20">
+      <section className="py-20">
         <div className="container mx-auto px-4 flex flex-col items-center text-center">
           <div className="max-w-3xl mx-auto space-y-6 flex flex-col items-center">
             <h2 className="section-heading">
               Ready to Build Something <span className="text-primary">Amazing?</span>
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               Let's discuss how we can help transform your vision into reality. Our team is ready to partner with you on your next big project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link
-                href="/contact"
-                className="btn-primary"
-              >
+              <Link href="/contact" className="btn-primary">
                 Start a Conversation
                 <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link
-                href="/services"
-                className="btn-secondary"
-              >
+              <Link href="/services" className="btn-secondary">
                 View Our Services
               </Link>
             </div>
