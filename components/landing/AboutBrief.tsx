@@ -27,10 +27,10 @@ const specItems = [
 ]
 
 const metricItems = [
-    { label: "EXPERIENCE", value: 5, suffix: "+ YR", subtext: "Legacy of innovation" },
-    { label: "DELIVERED", value: 100, suffix: "+ OBJ", subtext: "High-impact deployments" },
-    { label: "CLIENT BASE", value: 50, suffix: "+ UNIT", subtext: "Strategic global partners" },
-    { label: "AVAILABILITY", value: 99.9, suffix: "%", subtext: "SLA-grade uptime" }
+    { label: "EXPERIENCE", value: 2, suffix: "+ YR", subtext: "Official Incorporation" },
+    { label: "DEPLOYED", value: 100, suffix: "+ OBJ", subtext: "Industrial-Grade Systems" },
+    { label: "AVAILABILITY", value: 99.9, suffix: "%", subtext: "SLA-Grade Reliability" },
+    { label: "SUPPORT", value: 24, suffix: "/7", subtext: "Elite Technical Care" }
 ]
 
 export function AboutBrief() {

@@ -10,79 +10,36 @@ import Link from "next/link";
 
 const coreValues = [
   {
-    icon: Target,
-    title: "Innovation First",
-    description: "We constantly push boundaries, exploring emerging technologies and methodologies to deliver cutting-edge solutions that give our clients a competitive advantage.",
+    icon: Cpu,
+    title: "Architectural Excellence",
+    description: "We don't just build; we architect. Every line of code is engineered for maximum resilience, scalability, and long-term performance in mission-critical environments.",
     color: "from-primary to-rose-500"
   },
   {
-    icon: Users,
-    title: "Client Partnership",
-    description: "Your success is our success. We build lasting relationships through transparent communication, collaborative problem-solving, and unwavering commitment to your goals.",
+    icon: Layers,
+    title: "Strategic Partnership",
+    description: "We operate as a technical extension of your team, merging elite-grade engineering with your business vision to drive measurable industrial impact.",
     color: "from-indigo-500 to-purple-500"
   },
   {
-    icon: Trophy,
-    title: "Excellence Driven",
-    description: "We maintain the highest standards in every aspect of our work—from code quality to user experience—ensuring exceptional results that exceed expectations.",
+    icon: Target,
+    title: "Pioneering Logic",
+    description: "Our approach is rooted in advanced computational logic. We implement emerging technologies and methodologies that provide a definitive competitive advantage.",
     color: "from-cyan-500 to-blue-500"
   },
   {
     icon: Shield,
-    title: "Trust & Security",
-    description: "We prioritize data protection and security compliance, implementing industry best practices to safeguard your digital assets and maintain user privacy.",
+    title: "Operational Integrity",
+    description: "Trust is built on technical reliability. We prioritize high-level security and protocol compliance at every layer, safeguarding your digital infrastructure.",
     color: "from-emerald-500 to-green-500"
   }
 ];
 
 const achievements = [
-  { year: "2019", milestone: "Company Founded", description: "Started with a vision to democratize enterprise technology" },
-  { year: "2020", milestone: "50+ Projects Delivered", description: "Successfully launched solutions across 5 industries" },
-  { year: "2022", milestone: "Reached 100 Clients", description: "Expanded team to 25+ technical experts" },
-  { year: "2024", milestone: "International Expansion", description: "Opened offices in 3 countries, serving global enterprises" }
-];
-
-const teamMembers = [
-  {
-    name: "Arjun Bhatt",
-    role: "Founder & CEO",
-    bio: "Visionary technologist with 10+ years building scalable software. Former lead engineer at Fortune 500 companies, driving product strategy and company direction.",
-    expertise: ["Product Strategy", "Architecture", "Team Leadership"],
-    icon: Layers,
-    gradient: "from-primary/15 to-rose-500/10",
-    accent: "text-primary",
-    social: { linkedin: "#", twitter: "#", github: "#" }
-  },
-  {
-    name: "Priya Sharma",
-    role: "CTO & Lead Architect",
-    bio: "Full-stack architect specializing in cloud-native systems and microservices. Passionate about building resilient, high-performance infrastructure.",
-    expertise: ["Cloud Architecture", "DevOps", "Backend Systems"],
-    icon: Code2,
-    gradient: "from-indigo-500/15 to-purple-500/10",
-    accent: "text-indigo-500",
-    social: { linkedin: "#", twitter: "#", github: "#" }
-  },
-  {
-    name: "Rohan Mehta",
-    role: "Head of Design",
-    bio: "Award-winning UX/UI designer with a deep understanding of user psychology. Transforms complex workflows into intuitive, beautiful digital experiences.",
-    expertise: ["UX Research", "UI Design", "Design Systems"],
-    icon: Smartphone,
-    gradient: "from-cyan-500/15 to-blue-500/10",
-    accent: "text-cyan-600",
-    social: { linkedin: "#", twitter: "#", github: "#" }
-  },
-  {
-    name: "Kiran Patel",
-    role: "Head of Growth",
-    bio: "Data-driven growth strategist who has scaled multiple B2B SaaS products from 0 to $10M ARR. Focused on product-led growth and GTM strategies.",
-    expertise: ["Growth Strategy", "Analytics", "B2B SaaS"],
-    icon: BarChart3,
-    gradient: "from-emerald-500/15 to-green-500/10",
-    accent: "text-emerald-600",
-    social: { linkedin: "#", twitter: "#", github: "#" }
-  }
+  { year: "2023", milestone: "Official Incorporation", description: "BHATT SQUARE PRIVATE LIMITED was registered on June 30, 2023, establishing its roots in Lucknow, Uttar Pradesh." },
+  { year: "2024", milestone: "Strategic Foundation", description: "Successfully held our first Annual General Meeting, solidifying our operational framework and technical roadmap." },
+  { year: "2025", milestone: "Market Acceleration", description: "Enhanced our portfolio in professional and technical services, delivering mission-critical solutions to a expanding client base." },
+  { year: "2026", milestone: "Global Innovation", description: "Continuing to pioneer industrial-grade digital products and scaling our technical expertise across international markets." }
 ];
 
 function AboutPageContent() {
@@ -208,28 +165,28 @@ function AboutPageContent() {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Founded in 2019, <strong className="text-foreground">Bhatt Square Pvt. Ltd.</strong> emerged from a simple yet powerful vision: to make enterprise-grade technology accessible to businesses of all sizes. What started as a small team of developers has grown into a full-service digital agency serving clients across the globe.
+                  Incorporated on <strong className="text-foreground">June 30, 2023</strong>, <strong className="text-foreground">BHATT SQUARE PRIVATE LIMITED</strong> is a premier Indian legal entity registered under the Registrar of Companies in Kanpur. Headquartered in the vibrant hub of Gomti Nagar, Lucknow, we embody a culture of technical rigor and industrial-grade excellence.
                 </p>
                 <p>
-                  We specialize in crafting bespoke software solutions that solve complex business challenges. From startups building their first MVP to enterprises modernizing legacy systems, we bring technical expertise, strategic thinking, and a relentless focus on user experience to every project.
+                  Our expertise is rooted in the <strong className="text-foreground">Professional, Scientific, and Technical sectors</strong>. We operate with a mission to architect high-performance digital ecosystems that empower modern enterprises. By merging advanced logic with sophisticated design, we transform complex business requirements into seamless, scalable experiences.
                 </p>
                 <p>
-                  Our multidisciplinary team combines deep technical knowledge with creative problem-solving. We don't just write code—we partner with you to understand your business, identify opportunities, and deliver solutions that drive measurable results.
+                  As an <strong className="text-foreground">Active</strong> and forward-thinking organization, we prioritize long-term value creation. Our trajectory is defined by a relentless pursuit of innovation—ensuring that every solution we deploy meets the highest standards of reliability, security, and technical sophistication.
                 </p>
               </div>
               
               <div className="grid grid-cols-3 gap-6 pt-6 border-t border-border">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-1">200+</div>
-                  <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Projects Delivered</div>
+                  <div className="text-3xl font-bold text-primary mb-1">100+</div>
+                  <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Projects Shipped</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-1">150+</div>
-                  <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Happy Clients</div>
+                  <div className="text-3xl font-bold text-primary mb-1">Active</div>
+                  <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Entity Status</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-1">98%</div>
-                  <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Success Rate</div>
+                  <div className="text-3xl font-bold text-primary mb-1">24/7</div>
+                  <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Elite Support</div>
                 </div>
               </div>
             </div>
@@ -286,118 +243,7 @@ function AboutPageContent() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section ref={teamRef} className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="section-heading">
-              Meet the <span className="text-primary">Team</span>
-            </h2>
-            <p className="section-subheading">
-              A collective of industry veterans, creative builders, and strategic thinkers united by a passion for impactful technology.
-            </p>
-          </div>
-
-          {/* Team Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {teamMembers.map((member, index) => (
-              <div
-                key={index}
-                className="team-card group relative flex flex-col rounded-2xl bg-card border border-border overflow-hidden hover:border-primary/40 hover:shadow-xl hover:-translate-y-2 transition-all duration-400"
-              >
-                {/* Gradient Header */}
-                <div className={`relative h-36 bg-gradient-to-br ${member.gradient} flex items-center justify-center`}>
-                  {/* Decorative grid pattern */}
-                  <div className="absolute inset-0 opacity-[0.04]" style={{
-                    backgroundImage: "radial-gradient(circle, currentColor 1px, transparent 1px)",
-                    backgroundSize: "18px 18px"
-                  }}></div>
-                  <div className="relative w-20 h-20 rounded-2xl bg-background/80 border border-border/50 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-300">
-                    <member.icon className={`w-9 h-9 ${member.accent}`} />
-                  </div>
-                  {/* Index badge */}
-                  <div className="absolute top-3 right-3 text-xs font-bold text-muted-foreground/60 font-mono">
-                    0{index + 1}
-                  </div>
-                </div>
-
-                {/* Card Body */}
-                <div className="flex flex-col flex-1 p-5">
-                  <div className="mb-4">
-                    <h3 className="text-base font-bold text-foreground mb-0.5">{member.name}</h3>
-                    <p className={`text-xs font-semibold uppercase tracking-widest ${member.accent} mb-3`}>
-                      {member.role}
-                    </p>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {member.bio}
-                    </p>
-                  </div>
-
-                  {/* Expertise Tags */}
-                  <div className="mt-auto pt-4 border-t border-border space-y-2">
-                    <div className="flex flex-wrap gap-1.5">
-                      {member.expertise.map((skill, i) => (
-                        <span
-                          key={i}
-                          className="inline-block text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-md bg-muted text-muted-foreground border border-border"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Social Links */}
-                  <div className="flex items-center gap-2 mt-4">
-                    <a
-                      href={member.social.linkedin}
-                      className="p-1.5 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/8 transition-all duration-200"
-                      aria-label={`${member.name} LinkedIn`}
-                    >
-                      <Linkedin className="w-3.5 h-3.5" />
-                    </a>
-                    <a
-                      href={member.social.twitter}
-                      className="p-1.5 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/8 transition-all duration-200"
-                      aria-label={`${member.name} Twitter`}
-                    >
-                      <Twitter className="w-3.5 h-3.5" />
-                    </a>
-                    <a
-                      href={member.social.github}
-                      className="p-1.5 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/8 transition-all duration-200"
-                      aria-label={`${member.name} GitHub`}
-                    >
-                      <Github className="w-3.5 h-3.5" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Team Culture Banner */}
-          <div className="mt-16 rounded-2xl bg-gradient-to-r from-primary/8 via-indigo-500/5 to-primary/8 border border-primary/15 p-8 md:p-12 text-center">
-            <div className="max-w-2xl mx-auto">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-widest mb-6">
-                <Users className="w-3.5 h-3.5" />
-                Join Our Team
-              </div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                We're Always Looking for <span className="text-primary">Exceptional Talent</span>
-              </h3>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                We believe great products are built by great people. If you're passionate about building impactful technology and want to work in a culture of excellence, we'd love to hear from you.
-              </p>
-              <Link href="/contact" className="btn-primary">
-                View Open Roles
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Timeline/Milestones */}
       <section ref={timelineRef} className="py-20 bg-muted/30 relative overflow-hidden">
