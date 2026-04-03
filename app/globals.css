@@ -23,7 +23,7 @@
 }
 
 :root {
-  --background: #eddcc631;
+  --background: #fdf6ef;
   --foreground: #0f172a;
 
   --primary: #BF4646; /* Rose 600 */
@@ -204,5 +204,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .dark .text-red-glow {
   text-shadow: 0 0 20px rgba(244, 63, 94, 0.6);
+}
+
+/* 3D Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.transform-translate-z-50 {
+  transform: translateZ(50px);
 }
 
