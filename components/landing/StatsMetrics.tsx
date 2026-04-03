@@ -67,7 +67,7 @@ export function StatsMetrics() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-12 bg-background relative overflow-hidden border-y border-border/50">
+    <section ref={sectionRef} className="py-15 bg-background relative overflow-hidden border-y border-border/50">
       {/* Moving technical grid background */}
       <div className="stats-grid-bg absolute inset-0 z-0 opacity-5 pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] dark:bg-[radial-gradient(#fff_1px,transparent_1px)] bg-[size:40px_40px]"></div>
       

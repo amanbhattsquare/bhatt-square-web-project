@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { ArrowRight, Code2, Globe, Laptop, Zap, ChevronDown, Command, Terminal, Cpu } from "lucide-react"
 import gsap from "gsap"
+import { motion } from "framer-motion"
 
 const useTypewriter = (words: string[], typingSpeed = 100, deletingSpeed = 50, pauseTime = 2000) => {
   const [displayText, setDisplayText] = useState("")
@@ -136,138 +137,142 @@ export function Hero() {
     <section 
         ref={heroRef} 
         onMouseMove={handleMouseMove}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-5 pb-10 bg-background perspective-1000"
+        className="relative py-15 pb-15 flex items-center justify-center overflow-hidden bg-background"
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] mix-blend-screen animate-pulse-slow"></div>
-          <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[100px] mix-blend-screen animate-pulse-slow delay-1000"></div>
-          <div className="absolute top-[40%] left-[20%] w-[300px] h-[300px] bg-rose-500/5 rounded-full blur-[80px] mix-blend-screen"></div>
+      {/* Hero Background System */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          {/* Base Background with slight gradient */}
+          <div className="absolute inset-0 bg-background"></div>
           
-          {/* Grid Pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background"></div>
+          {/* Main Hero Background Image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-100"
+            style={{ backgroundImage: "url('/images/hero-bg.png')" }}
+          ></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background"></div>
+          
+          {/* Animated Gradient Orbs */}
+          <motion.div 
+            animate={{ 
+                x: [0, 30, 0],
+                y: [0, -50, 0],
+                scale: [1, 1.1, 1] 
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -top-[10%] -left-[10%] w-[60vw] h-[60vw] bg-primary/10 rounded-full blur-[120px]" 
+          />
+          <motion.div 
+            animate={{ 
+                x: [0, -40, 0],
+                y: [0, 60, 0],
+                scale: [1, 1.2, 1] 
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute -bottom-[20%] -right-[10%] w-[50vw] h-[50vw] bg-primary/5 rounded-full blur-[100px]" 
+          />
+          
+          {/* Interactive Layer (moves with mouse) */}
+          <div ref={visualRef} className="absolute inset-0 overflow-hidden opacity-30">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle_at_center,rgba(244,63,94,0.08)_0%,transparent_70%)]"></div>
+          </div>
+
+          {/* Industrial Grid Pattern */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+          
+          {/* Parallax Floating Elements */}
+          <div className="absolute inset-0 opacity-20 pointer-events-none">
+              {[...Array(6)].map((_, i) => (
+                  <motion.div
+                      key={i}
+                      initial={{ opacity: 0 }}
+                      animate={{ 
+                          opacity: [0, 0.4, 0],
+                          y: [0, -100 - (i * 20)],
+                          x: [0, (i % 2 === 0 ? 50 : -50)]
+                      }}
+                      transition={{ 
+                          duration: 8 + (i * 2), 
+                          repeat: Infinity, 
+                          delay: i * 1.5,
+                          ease: "linear"
+                      }}
+                      className="absolute w-1 h-1 bg-primary rounded-full shadow-[0_0_10px_rgba(244,63,94,0.8)]"
+                      style={{ 
+                          left: `${15 + (i * 15)}%`, 
+                          top: `${60 + (i * 5)}%` 
+                      }}
+                  />
+              ))}
+          </div>
+
+          {/* Noise & Scanlines Overlay */}
+          <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3C/rect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] bg-[size:100%_4px,3px_100%] pointer-events-none opacity-[0.2]"></div>
+
+          {/* Darkening layer to ensure text readability */}
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
+
+          {/* Technical Geometric Accents */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+              {/* Corner Brackets */}
+              <div className="absolute top-10 left-10 w-20 h-20 border-t-2 border-l-2 border-primary/20 rounded-tl-3xl"></div>
+              <div className="absolute top-10 right-10 w-20 h-20 border-t-2 border-r-2 border-primary/20 rounded-tr-3xl"></div>
+              <div className="absolute bottom-10 left-10 w-20 h-20 border-b-2 border-l-2 border-primary/20 rounded-bl-3xl"></div>
+              <div className="absolute bottom-10 right-10 w-20 h-20 border-b-2 border-r-2 border-primary/20 rounded-br-3xl"></div>
+
+              {/* Technical Labels */}
+              <div className="absolute top-1/2 -left-4 -translate-y-1/2 rotate-90 flex items-center gap-4 opacity-20">
+                  <span className="text-[10px] font-mono tracking-[0.5em] text-primary uppercase">System.Core.Initialize</span>
+                  <div className="w-12 h-px bg-primary/40"></div>
+              </div>
+              <div className="absolute top-1/2 -right-4 -translate-y-1/2 -rotate-90 flex items-center gap-4 opacity-20">
+                  <span className="text-[10px] font-mono tracking-[0.5em] text-primary uppercase">Bhatt.Square.v2.0</span>
+                  <div className="w-12 h-px bg-primary/40"></div>
+              </div>
+          </div>
       </div>
       
       <div className="container mx-auto px-4 z-10 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="max-w-4xl mx-auto text-center">
             
             {/* Text Content */}
-            <div ref={contentRef} className="space-y-8 max-w-2xl relative z-20">
-                 <div className="hero-badge inline-flex items-center px-3 py-1 rounded-full border border-border bg-muted/50 backdrop-blur-md text-foreground/80 text-xs font-medium uppercase tracking-wider shadow-sm">
-                   <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
-                   Available for New Projects
-                 </div>
+            <div ref={contentRef} className="space-y-8">
+                 <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8 }}
+                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.4em] mb-4 shadow-lg shadow-primary/5"
+                 >
+                    <Cpu className="w-4 h-4 fill-current" />
+                    Available for New Projects
+                 </motion.div>
 
-                <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
-                    <span className="hero-title-line block">
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase leading-[0.9] text-white">
+                    <span className="block text-red-glow">
                         We Build
                     </span>
-                    <span className="hero-title-line block bg-clip-text text-transparent bg-gradient-to-r from-primary via-indigo-500 to-rose-500 animate-gradient bg-[length:200%_auto] min-h-[1.1em]">
+                    <span className="block bg-clip-text text-transparent bg-red-400 animate-gradient bg-[length:200%_auto] min-h-[1.1em]">
                        {typewriterText}
                        <span className="animate-pulse ml-1 text-foreground">|</span>
                     </span>
                 </h1>
 
-                <p className="hero-desc text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg">
+                <p className="hero-desc text-lg md:text-xl text-white/80 font-medium max-w-2xl mx-auto leading-relaxed">
                     Premium software development services for forward-thinking companies. We combine aesthetic excellence with engineering precision.
                 </p>
 
-                <div className="hero-btns flex flex-wrap gap-4 pt-2">
-                    <Link ref={btnRef} href="/contact" className="btn-primary">
-                        Start a Project <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+                    <Link ref={btnRef} href="/contact" className="btn-primary group">
+                        Start a Project <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                     <Link href="/services" className="btn-secondary">
                         Our Expertise
                     </Link>
                 </div>
-                
-                <div className="hero-desc flex items-center gap-8 pt-8 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-                    {/* Trust indicators/Logos could go here */}
-                    {/* Placeholder for now */}
-                    <div className="text-xs font-mono text-muted-foreground">TRUSTED BY INNOVATORS WORLDWIDE</div>
-                </div>
             </div>
-
-            {/* Visual Content */}
-            <div ref={visualRef} className="relative hidden lg:flex items-center justify-center transform-style-3d">
-                
-                {/* Main Code Window */}
-                <div className="code-window relative z-10 w-full max-w-lg bg-[#0d1117]/90 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl shadow-black/20 overflow-hidden ring-1 ring-white/5">
-                    {/* Window Header */}
-                    <div className="flex items-center px-4 py-3 border-b border-white/5 bg-white/5">
-                        <div className="flex space-x-2">
-                            <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                            <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                            <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-                        </div>
-                        <div className="mx-auto text-xs text-rose-600 font-mono text-muted-foreground flex items-center gap-2">
-                            <Command className="w-3 h-3" /> bhatt_square_engine.tsx
-                        </div>
-                    </div>
-
-                    {/* Window Body */}
-                    <div className="p-6 font-mono text-sm leading-relaxed overflow-hidden text-white">
-                        <div className="flex text-blue-400">
-                            <span className="text-purple-400 mr-2">import</span> 
-                            {"{ Future }"} 
-                            <span className="text-purple-400 mx-2">from</span> 
-                            <span className="text-green-400">'@bhatt-square/core'</span>;
-                        </div>
-                        <div className="h-4"></div>
-                        <div>
-                            <span className="text-purple-400">export const</span> 
-                            <span className="text-yellow-400 ml-2">App</span> 
-                            <span className="text-white"> = </span>
-                            <span className="text-blue-400">async</span>
-                             {" () => {"}
-                        </div>
-                        <div className="pl-4 border-l border-white/5 ml-1">
-                             <span className="text-purple-400">const</span> solution = 
-                             <span className="text-rose-400"> await</span> Future.build({"{"}
-                        </div>
-                        <div className="pl-8 text-gray-400">
-                            performance: <span className="text-green-400">'100%'</span>,
-                        </div>
-                        <div className="pl-8 text-gray-400">
-                            design: <span className="text-green-400">'Award-Winning'</span>,
-                        </div>
-                        <div className="pl-8 text-gray-400">
-                            scalability: <span className="text-blue-400">Infinity</span>,
-                        </div>
-                        <div className="pl-4 border-l border-white/5 ml-1">
-                            {"});"}
-                        </div>
-                        <div className="pl-4 border-l border-white/5 ml-1 h-4"></div>
-                        <div className="pl-4 border-l border-white/5 ml-1">
-                            <span className="text-purple-400">return</span> solution.launch();
-                        </div>
-                        <div>{"}"}</div>
-                    </div>
-                </div>
-
-                {/* Floating Elements */}
-                <div className="absolute -right-8 -top-8 floating-icon p-4 bg-background/80 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl animate-float" style={{ animationDelay: '0s' }}>
-                    <div className="bg-indigo-500/20 p-3 rounded-xl">
-                        <Globe className="w-6 h-6 text-indigo-500" />
-                    </div>
-                </div>
-                
-                <div className="absolute -left-12 bottom-12 floating-icon p-4 bg-background/80 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl animate-float" style={{ animationDelay: '1.5s' }}>
-                    <div className="bg-rose-500/20 p-3 rounded-xl">
-                        <Cpu className="w-6 h-6 text-rose-500" />
-                    </div>
-                </div>
-
-                <div className="absolute right-0 bottom-[-20px] floating-icon px-5 py-3 bg-background/80 backdrop-blur-md rounded-full border border-white/10 shadow-xl animate-float flex items-center gap-3" style={{ animationDelay: '0.8s' }}>
-                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                    <span className="text-xs font-bold">System Nominal</span>
-                </div>
-            </div>
-
         </div>
       </div>
-      
+
       {/* Scroll Indicator */}
       <div 
         onClick={scrollToContent} 

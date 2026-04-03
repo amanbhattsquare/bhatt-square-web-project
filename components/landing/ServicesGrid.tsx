@@ -216,7 +216,7 @@ export function ServicesGrid() {
         </div>
 
         {/* Global CTA Section - Industrial Redesign */}
-        <div className="mt-10 md:mt-14 grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
+        <div className="mt-5 md:mt-14 grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
             <div className="lg:col-span-12 text-center mb-6">
                  <h4 className="section-heading !text-3xl opacity-50">Industrial Grade.</h4>
             </div>

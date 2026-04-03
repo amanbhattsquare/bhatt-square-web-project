@@ -64,11 +64,11 @@ export function Header() {
                   className="rounded-lg object-contain"
                 />
               </div>
-              <div className="ml-3 hidden sm:block">
-                <span className="text-xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors leading-none block">
+              <div className="ml-2.5 sm:ml-3 block">
+                <span className="text-base sm:text-xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors leading-none block">
                   BHATT<span className="text-primary group-hover:text-foreground"> SQUARE</span>
                 </span>
-                <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest leading-none mt-1 block">
+                <span className="text-[8px] sm:text-[10px] font-bold text-muted-foreground uppercase tracking-widest leading-none mt-1 block">
                   Innovate . Scale . Succeed
                 </span>
               </div>
@@ -238,4 +238,4 @@ export function Header() {
       </AnimatePresence>
     </header>
   )
-}
+}

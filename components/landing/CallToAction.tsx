@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react"
 
 export function CallToAction() {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-15 relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 -z-10"></div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-full bg-primary/5 blur-3xl -z-10 rounded-full opacity-50"></div>
 

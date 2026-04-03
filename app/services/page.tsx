@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <main className="flex min-h-screen flex-col pt-16">
+    <main className="flex min-h-screen flex-col pt-6">
       <ServicesHero />
       
       <div id="full-services" className="bg-background">
@@ -39,4 +39,4 @@ export default function ServicesPage() {
     </main>
   );
 }
-
+

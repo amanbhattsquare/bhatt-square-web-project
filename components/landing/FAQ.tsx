@@ -64,7 +64,7 @@ export function FAQ() {
   }
 
   return (
-    <section ref={sectionRef} className="py-24 bg-background">
+    <section ref={sectionRef} className="py-15 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="section-heading">

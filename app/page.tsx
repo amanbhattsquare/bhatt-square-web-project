@@ -11,7 +11,7 @@ import { FAQ } from "@/components/landing/FAQ";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col">
+    <main className="flex min-h-screen flex-col pt-6">
       <Hero />
       <TechStackMarquee />
       <StatsMetrics />
