@@ -1,38 +1,64 @@
 "use client"
 
 import Link from "next/link"
-import { Facebook, Instagram, Linkedin, Twitter, Mail, MapPin, Phone, ArrowUpRight, Heart, Code2 } from "lucide-react"
+import Image from "next/image"
+import { Facebook, Instagram, Linkedin, Twitter, ArrowUpRight, Code2, Send } from "lucide-react"
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-background border-t border-border pt-16 pb-8">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+    <footer className="bg-background relative border-t border-border overflow-hidden">
+      {/* Background Texture */}
+      <div className="absolute inset-0 dot-grid opacity-20 pointer-events-none" />
+      
+      {/* Top Accent Line */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 mb-20">
           
           {/* Brand Column */}
-          <div className="space-y-6">
-            <Link href="/" className="inline-block group">
-              <span className="text-2xl font-extrabold tracking-tight text-foreground">
-                Bhatt<span className="text-primary group-hover:underline decoration-primary underline-offset-4">Square</span>
-              </span>
+          <div className="md:col-span-12 lg:col-span-4 space-y-6">
+            <Link href="/" className="flex items-center group mb-6 inline-flex">
+              <div className="relative overflow-hidden bg-primary/10 p-1 border border-primary/20 transition-all duration-300">
+                <Image
+                  src="/images/BhattSqureLogo2.png"
+                  alt="Bhatt Square Logo"
+                  width={34}
+                  height={34}
+                  className="object-contain"
+                />
+              </div>
+              <div className="ml-3 block border-l border-border/50 pl-3">
+                <span className="text-xl font-display font-black tracking-tighter text-foreground group-hover:text-primary transition-colors leading-[0.8] block uppercase">
+                  BHATT<span className="text-primary group-hover:text-foreground transition-colors">SQUARE</span>
+                </span>
+                <span className="text-[7px] font-black text-muted-foreground uppercase tracking-[0.3em] leading-none mt-1.5 block">
+                  Innovate . Scale . Succeed
+                </span>
+              </div>
             </Link>
-            <p className="text-muted-foreground leading-relaxed">
+
+            <p className="text-muted-foreground text-sm font-medium leading-relaxed max-w-sm">
               Pioneering digital transformation with scalable SaaS architectures and immersive web experiences. We build the technology that powers tomorrow.
             </p>
-            <div className="flex items-center space-x-4">
-               <SocialLink href="#" icon={<Linkedin className="w-5 h-5" />} label="LinkedIn" />
-               <SocialLink href="#" icon={<Twitter className="w-5 h-5" />} label="Twitter" />
-               <SocialLink href="#" icon={<Instagram className="w-5 h-5" />} label="Instagram" />
-               <SocialLink href="#" icon={<Facebook className="w-5 h-5" />} label="Facebook" />
+            
+            <div className="flex items-center space-x-3 pt-2">
+               <SocialLink href="#" icon={<Linkedin className="w-4 h-4" />} label="LinkedIn" />
+               <SocialLink href="#" icon={<Twitter className="w-4 h-4" />} label="Twitter" />
+               <SocialLink href="#" icon={<Instagram className="w-4 h-4" />} label="Instagram" />
+               <SocialLink href="#" icon={<Facebook className="w-4 h-4" />} label="Facebook" />
             </div>
           </div>
 
-          {/* Solution Column */}
-          <div>
-            <h4 className="font-bold text-foreground mb-6">Solutions</h4>
-            <ul className="space-y-4 text-muted-foreground">
+          {/* Solutions Column */}
+          <div className="md:col-span-4 lg:col-span-2">
+            <h4 className="text-[10px] font-black tracking-[0.3em] text-primary/60 uppercase mb-6 flex items-center">
+              <span className="w-2 h-2 rounded-sm bg-primary/20 border border-primary/40 mr-2"></span>
+              SOLUTIONS
+            </h4>
+            <ul className="space-y-3">
               <FooterLink href="/services">Enterprise Platforms</FooterLink>
               <FooterLink href="/services">SaaS Development</FooterLink>
               <FooterLink href="/services">Cloud Infrastructure</FooterLink>
@@ -41,48 +67,58 @@ export function Footer() {
           </div>
 
           {/* Company Column */}
-          <div>
-            <h4 className="font-bold text-foreground mb-6">Company</h4>
-            <ul className="space-y-4 text-muted-foreground">
+          <div className="md:col-span-4 lg:col-span-2">
+             <h4 className="text-[10px] font-black tracking-[0.3em] text-primary/60 uppercase mb-6 flex items-center">
+              <span className="w-2 h-2 rounded-sm bg-primary/20 border border-primary/40 mr-2"></span>
+              COMPANY
+            </h4>
+            <ul className="space-y-3">
               <FooterLink href="/about">About Us</FooterLink>
-              <FooterLink href="/careers">Careers <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full ml-2">Hiring</span></FooterLink>
+              <FooterLink href="/careers">Careers <span className="inline-block text-[8px] border border-primary/40 bg-primary/10 text-primary px-1.5 py-0.5 ml-2 font-black uppercase tracking-widest">Hiring</span></FooterLink>
               <FooterLink href="/contact">Contact</FooterLink>
               <FooterLink href="/privacy">Privacy Policy</FooterLink>
             </ul>
           </div>
 
           {/* Newsletter Column */}
-          <div>
-            <h4 className="font-bold text-foreground mb-6">Stay Updated</h4>
-            <p className="text-sm text-muted-foreground mb-4">
-              Subscribe to our newsletter for the latest tech insights and company updates.
+          <div className="md:col-span-4 lg:col-span-4">
+             <h4 className="text-[10px] font-black tracking-[0.3em] text-primary/60 uppercase mb-6 flex items-center">
+              <span className="w-2 h-2 rounded-sm bg-primary/20 border border-primary/40 mr-2"></span>
+              COMMUNICATIONS
+            </h4>
+            <p className="text-sm font-semibold text-muted-foreground mb-4">
+              Subscribe to our developer broadcast for architectural insights and system updates.
             </p>
             <form className="flex flex-col space-y-3" onSubmit={(e) => e.preventDefault()}>
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="bg-muted/50 border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-              />
-              <button className="btn-primary text-sm py-3 px-6 rounded-xl w-full">
-                Subscribe
+              <div className="relative group">
+                <input 
+                  type="email" 
+                  placeholder="name@company.com" 
+                  className="w-full bg-background border border-border/80 text-sm font-medium px-4 py-3 placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all duration-300 rounded-none"
+                />
+                <div className="absolute top-0 right-0 bottom-0 w-1 bg-primary/20 group-hover:bg-primary transition-colors duration-300"></div>
+              </div>
+              <button className="w-full flex items-center justify-center gap-2 py-3 bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 group">
+                SUBSCRIBE
+                <Send className="w-3 h-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </button>
             </form>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground text-center md:text-left">
-            &copy; {currentYear} Bhatt Square Pvt. Ltd. All rights reserved.
-            <Link href="https://www.linkedin.com/in/amanktyr" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors ml-2" aria-label="Developed by Aman Ktyr, a software developer. View profile on LinkedIn. developer Aman Ktyr" title="Developed by Aman Ktyr, a software developer.">
-              <Code2 className="w-4 h-4 text-primary/60 group-hover:text-primary group-hover:rotate-3 transition-all inline" />
+        <div className="pt-6 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase text-center md:text-left flex flex-wrap items-center justify-center md:justify-start gap-1">
+            &copy; {currentYear} BHATT SQUARE PVT. LTD. <span className="opacity-50">||</span> ALL RIGHTS RESERVED.
+            <Link href="https://www.linkedin.com/in/amanktyr" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors ml-1 inline-flex items-center" aria-label="Developed by Aman Ktyr">
+              <Code2 className="w-3 h-3 text-primary/60 hover:text-primary transition-all inline" />
             </Link>
           </p>
 
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
-             <Link href="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
-             <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
-             <Link href="/cookies" className="hover:text-foreground transition-colors">Cookie Policy</Link>
+          <div className="flex flex-wrap justify-center gap-4 text-[9px] font-black tracking-[0.2em] uppercase text-muted-foreground">
+             <Link href="/terms" className="hover:text-primary transition-colors">TERMS</Link>
+             <Link href="/privacy" className="hover:text-primary transition-colors">PRIVACY</Link>
+             <Link href="/cookies" className="hover:text-primary transition-colors">COOKIES</Link>
           </div>
         </div>
       </div>
@@ -92,7 +128,11 @@ export function Footer() {
 
 function SocialLink({ href, icon, label }: { href: string, icon: React.ReactNode, label: string }) {
   return (
-    <Link href={href} className="w-10 h-10 flex items-center justify-center rounded-full bg-muted/50 text-muted-foreground hover:bg-primary/10 hover:text-primary hover:scale-110 transition-all duration-300" aria-label={label}>
+    <Link 
+      href={href} 
+      className="w-8 h-8 flex items-center justify-center border border-border/50 bg-background text-muted-foreground hover:border-primary/50 hover:bg-primary/5 hover:text-primary transition-all duration-300" 
+      aria-label={label}
+    >
       {icon}
     </Link>
   )
@@ -101,9 +141,9 @@ function SocialLink({ href, icon, label }: { href: string, icon: React.ReactNode
 function FooterLink({ href, children }: { href: string, children: React.ReactNode }) {
   return (
     <li>
-      <Link href={href} className="group inline-flex items-center hover:text-primary transition-colors">
-        {children}
-        <ArrowUpRight className="w-3 h-3 ml-1 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
+      <Link href={href} className="group inline-flex items-center text-xs font-bold text-foreground/70 hover:text-primary transition-colors duration-300">
+        <ArrowUpRight className="w-3 h-3 mr-2 opacity-50 text-primary group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+        <span className="uppercase tracking-wider">{children}</span>
       </Link>
     </li>
   )

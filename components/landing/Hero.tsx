@@ -144,12 +144,17 @@ export function Hero() {
           {/* Base Background with slight gradient */}
           <div className="absolute inset-0 bg-background"></div>
           
-          {/* Main Hero Background Image */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-100"
-            style={{ backgroundImage: "url('/images/hero-bg.png')" }}
-          ></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background"></div>
+          {/* Main Hero Background Video */}
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/images/hero-video.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70"></div>
           
           {/* Animated Gradient Orbs */}
           <motion.div 
@@ -210,7 +215,7 @@ export function Hero() {
           <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] bg-[size:100%_4px,3px_100%] pointer-events-none opacity-[0.2]"></div>
 
           {/* Darkening layer to ensure text readability */}
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
+          <div className="absolute inset-0 bg-black/40"></div>
 
           {/* Technical Geometric Accents */}
           <div className="absolute inset-0 z-0 pointer-events-none">

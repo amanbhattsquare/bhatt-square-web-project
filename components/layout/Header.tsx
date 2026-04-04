@@ -4,7 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
-import { Menu, Moon, Sun, X, ChevronRight } from "lucide-react"
+import { Menu, Moon, Sun, X, ChevronRight, Cpu } from "lucide-react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -38,35 +38,33 @@ export function Header() {
 
   return (
     <header 
-      className={`fixed top-0 z-50 w-full transition-all duration-500 ${
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrolled 
-          ? "py-3" 
-          : "py-5"
+          ? "bg-background/95 backdrop-blur-md border-b border-border/60 shadow-md" 
+          : "bg-gradient-to-b from-background/90 to-transparent border-b border-border/10"
       }`}
     >
+      {/* Top accent bar to convey structural/industrial vibe */}
+      <div className="h-1 w-full bg-primary origin-left scale-x-100" />
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <nav 
-          className={`relative flex items-center justify-between transition-all duration-500 rounded-[2rem] px-6 py-2 ${
-            scrolled 
-              ? "bg-background border border-border shadow-xl shadow-black/10" 
-              : "bg-background/90 backdrop-blur-xl border border-border/40 shadow-sm"
-          }`}
-        >
+        <nav className="flex items-center justify-between h-20">
+          
           {/* Logo Section */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center group">
-              <div className="relative overflow-hidden rounded-xl bg-primary/10 p-1 group-hover:scale-105 transition-transform duration-300">
+              <div className="relative overflow-hidden bg-primary/10 p-1 border border-primary/20 transition-all duration-300">
                 <Image
                   src="/images/BhattSqureLogo2.png"
                   alt="Bhatt Square Logo"
                   width={34}
                   height={34}
-                  className="rounded-lg object-contain"
+                  className="object-contain"
                 />
               </div>
-              <div className="ml-2.5 sm:ml-3 block">
-                <span className="text-base sm:text-xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors leading-none block">
-                  BHATT<span className="text-primary group-hover:text-foreground"> SQUARE</span>
+              <div className="ml-3 sm:ml-4 block border-l border-border/40 pl-3">
+                <span className="text-xl sm:text-2xl font-display font-black tracking-tighter text-foreground group-hover:text-primary transition-colors leading-[0.8] block uppercase">
+                  BHATT<span className="text-primary group-hover:text-foreground">SQUARE</span>
                 </span>
                 <span className="text-[8px] sm:text-[10px] font-bold text-muted-foreground uppercase tracking-widest leading-none mt-1 block">
                   Innovate . Scale . Succeed
@@ -83,18 +81,20 @@ export function Header() {
                 <Link 
                   key={link.name}
                   href={link.href} 
-                  className={`relative px-4 py-2 text-sm font-bold transition-all duration-300 rounded-full ${
-                    isActive 
-                      ? "text-primary" 
-                      : "text-foreground/70 hover:text-foreground"
+                  className={`relative px-5 py-2 text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 overflow-hidden group ${
+                    isActive ? "text-primary" : "text-foreground/60 hover:text-foreground"
                   }`}
                 >
-                  {link.name}
+                  {/* Hover background */}
+                  <div className="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                  
+                  <span className="relative z-10">{link.name}</span>
+                  
+                  {/* Active Indicator Line */}
                   {isActive && (
                     <motion.div 
-                      layoutId="nav-active"
-                      className="absolute inset-0 bg-primary/5 rounded-full -z-10"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      layoutId="nav-indicator"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary"
                     />
                   )}
                 </Link>
@@ -103,69 +103,57 @@ export function Header() {
           </div>
 
           {/* Desktop Actions */}
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden md:flex items-center space-x-4">
             <button
               onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
-              className="relative h-10 w-10 flex items-center justify-center rounded-xl bg-muted/50 border border-border/50 hover:bg-muted transition-all duration-300 overflow-hidden"
+              className="relative h-10 w-10 flex items-center justify-center bg-transparent border border-border/50 hover:border-primary/50 transition-all duration-300 overflow-hidden"
               aria-label="Toggle theme"
             >
-              <div className="relative h-5 w-5">
+              <div className="relative h-4 w-4">
                 <motion.div
                   initial={false}
-                  animate={{ 
-                    y: currentTheme === "dark" ? 0 : 40,
-                    opacity: currentTheme === "dark" ? 1 : 0 
-                  }}
+                  animate={{ y: currentTheme === "dark" ? 0 : 30, opacity: currentTheme === "dark" ? 1 : 0 }}
                   className="absolute inset-0 text-amber-400"
                 >
-                  <Sun className="h-5 w-5" />
+                  <Sun className="h-4 w-4" />
                 </motion.div>
                 <motion.div
                   initial={false}
-                  animate={{ 
-                    y: currentTheme === "light" ? 0 : -40,
-                    opacity: currentTheme === "light" ? 1 : 0 
-                  }}
-                  className="absolute inset-0 text-indigo-600"
+                  animate={{ y: currentTheme === "light" ? 0 : -30, opacity: currentTheme === "light" ? 1 : 0 }}
+                  className="absolute inset-0 text-indigo-400"
                 >
-                  <Moon className="h-5 w-5" />
+                  <Moon className="h-4 w-4" />
                 </motion.div>
               </div>
             </button>
             <Link 
               href="/contact" 
-              className="inline-flex items-center h-10 px-6 rounded-xl bg-primary text-primary-foreground text-sm font-bold transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:scale-95"
+              className="inline-flex items-center h-10 px-6 bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(244,63,94,0.2)] hover:-translate-y-0.5"
             >
-              GET STARTED
+               {/* <Cpu className="w-3 h-3 mr-2" /> */}
+               INITIATE PROJECT
             </Link>
           </div>
 
           {/* Mobile Menu Trigger */}
-          <div className="lg:hidden flex items-center space-x-2">
+          <div className="lg:hidden flex items-center space-x-3">
              <button
               onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
-              className="p-2.5 rounded-xl bg-muted/50 border border-border/50 transition-colors"
-              aria-label="Toggle theme"
+              className="p-2.5 border border-border/50 transition-colors"
             >
-              {currentTheme === "dark" ? <Sun className="h-5 w-5 text-amber-400" /> : <Moon className="h-5 w-5 text-indigo-600" />}
+              {currentTheme === "dark" ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-indigo-400" />}
             </button>
             <button
               onClick={toggleMenu}
-              className={`inline-flex items-center justify-center p-2.5 rounded-xl transition-all duration-300 ${
-                isMenuOpen ? "bg-primary text-white" : "bg-muted/50 text-foreground border border-border/50 hover:bg-muted"
+              className={`p-2.5 transition-all duration-300 ${
+                isMenuOpen ? "bg-primary text-white" : "border border-border/50 text-foreground hover:border-primary/50"
               }`}
             >
-              <span className="sr-only">Open main menu</span>
-              {isMenuOpen ? (
-                <X className="block h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Menu className="block h-6 w-6" aria-hidden="true" />
-              )}
+              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </nav>
       </div>
-
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
@@ -176,32 +164,31 @@ export function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={toggleMenu}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 lg:hidden"
             />
             <motion.div 
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="fixed right-0 top-0 h-screen w-[85%] max-w-sm bg-card border-l border-border z-50 lg:hidden p-6 shadow-2xl flex flex-col"
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed right-0 top-0 h-screen w-full max-w-sm bg-background border-l border-border/50 z-50 lg:hidden flex flex-col"
             >
-              <div className="flex items-center justify-between mb-10">
+              <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
+              
+              <div className="relative z-10 flex items-center justify-between p-6 border-b border-border/50">
                 <div className="flex items-center">
-                  <Image
-                    src="/images/BhattSqureLogo2.png"
-                    alt="Logo"
-                    width={32}
-                    height={32}
-                    className="rounded-lg"
-                  />
-                  <span className="ml-2 font-black tracking-tighter text-lg">BHATT SQUARE</span>
+                  <div className="bg-primary/10 p-1 border border-primary/20">
+                    <Image src="/images/BhattSqureLogo2.png" alt="Logo" width={28} height={28} />
+                  </div>
+                  <span className="ml-3 font-display font-black tracking-tighter text-lg uppercase">BHATT SQUARE</span>
                 </div>
-                <button onClick={toggleMenu} className="p-2 rounded-lg bg-muted hover:bg-muted/80">
+                <button onClick={toggleMenu} className="p-2 bg-muted/50 hover:bg-muted border border-border/50 transition-colors">
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="space-y-2 mb-auto">
+              <div className="relative z-10 flex flex-col p-6 space-y-2 mb-auto">
+                <p className="text-[9px] font-black uppercase tracking-[0.3em] text-primary mb-4">SYSTEM DIRECTORY</p>
                 {navLinks.map((link, i) => (
                   <motion.div
                     key={link.name}
@@ -212,24 +199,27 @@ export function Header() {
                     <Link 
                       href={link.href} 
                       onClick={toggleMenu}
-                      className={`flex items-center justify-between p-4 rounded-2xl text-lg font-bold transition-all ${
-                        pathname === link.href ? "bg-primary/10 text-primary" : "hover:bg-muted"
+                      className={`group flex items-center justify-between p-4 border transition-all duration-300 ${
+                        pathname === link.href 
+                          ? "border-primary/50 bg-primary/5 text-primary" 
+                          : "border-border/30 hover:border-primary/50 hover:bg-primary/5"
                       }`}
                     >
-                      {link.name}
-                      <ChevronRight className={`w-5 h-5 ${pathname === link.href ? "text-primary" : "text-muted-foreground/50"}`} />
+                      <span className="text-sm font-black uppercase tracking-[0.1em]">{link.name}</span>
+                      <ChevronRight className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${pathname === link.href ? "text-primary" : "text-muted-foreground"}`} />
                     </Link>
                   </motion.div>
                 ))}
               </div>
 
-              <div className="mt-6 pt-6 border-t border-border">
+              <div className="relative z-10 p-6 border-t border-border/50 bg-muted/20">
                 <Link 
                   href="/contact" 
                   onClick={toggleMenu}
-                  className="w-full flex items-center justify-center p-4 bg-primary text-white rounded-2xl font-black text-center shadow-lg shadow-primary/20"
+                  className="w-full flex items-center justify-center p-4 bg-primary text-primary-foreground font-black text-[10px] uppercase tracking-[0.2em] shadow-lg shadow-primary/20 hover:bg-primary/90 transition-colors"
                 >
-                  START YOUR PROJECT
+                  <Cpu className="w-3 h-3 mr-2" />
+                  INITIATE PROJECT
                 </Link>
               </div>
             </motion.div>
