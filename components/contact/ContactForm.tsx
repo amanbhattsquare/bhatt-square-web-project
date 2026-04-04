@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from 'react';
+import { Send, ArrowRight } from 'lucide-react';
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -51,11 +52,9 @@ export function ContactForm() {
       setIsSubmitting(true);
       setSubmitStatus(null);
       try {
-        // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 2000));
         console.log("Form submitted:", formData);
         setSubmitStatus('success');
-        // Reset form
         setFormData({
           firstName: '', lastName: '', email: '', phone: '', 
           company: '', inquiryType: 'General Inquiry', message: '', privacy: false
@@ -69,73 +68,111 @@ export function ContactForm() {
     }
   };
 
+  const inputClasses = (hasError: boolean) =>
+    `w-full px-4 py-3 bg-background border ${hasError ? 'border-red-500' : 'border-border/80'} text-sm font-medium text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all duration-300`;
+
   return (
-    <div className="bg-card p-8 rounded-2xl border border-border shadow-sm">
-        <form className="space-y-6" onSubmit={handleSubmit}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                    <label htmlFor="firstName" className="text-sm font-medium">First Name</label>
-                    <input type="text" id="firstName" value={formData.firstName} onChange={handleChange} className={`w-full px-4 py-3 rounded-md border ${errors.firstName ? 'border-red-500' : 'border-input'} bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow`} placeholder="John" />
-                    {errors.firstName && <p className="text-red-500 text-xs">{errors.firstName}</p>}
-                </div>
-                    <div className="space-y-2">
-                    <label htmlFor="lastName" className="text-sm font-medium">Last Name</label>
-                    <input type="text" id="lastName" value={formData.lastName} onChange={handleChange} className={`w-full px-4 py-3 rounded-md border ${errors.lastName ? 'border-red-500' : 'border-input'} bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow`} placeholder="Doe" />
-                    {errors.lastName && <p className="text-red-500 text-xs">{errors.lastName}</p>}
-                </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">Email</label>
-                    <input type="email" id="email" value={formData.email} onChange={handleChange} className={`w-full px-4 py-3 rounded-md border ${errors.email ? 'border-red-500' : 'border-input'} bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow`} placeholder="john@example.com" />
-                    {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
-                </div>
-                <div className="space-y-2">
-                    <label htmlFor="phone" className="text-sm font-medium">Phone Number</label>
-                    <input type="tel" id="phone" value={formData.phone} onChange={handleChange} className={`w-full px-4 py-3 rounded-md border ${errors.phone ? 'border-red-500' : 'border-input'} bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow`} placeholder="+1 234 567 890" />
-                    {errors.phone && <p className="text-red-500 text-xs">{errors.phone}</p>}
-                </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                    <label htmlFor="company" className="text-sm font-medium">Company Name</label>
-                    <input type="text" id="company" value={formData.company} onChange={handleChange} className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow" placeholder="Your Company" />
-                </div>
-                <div className="space-y-2">
-                    <label htmlFor="inquiryType" className="text-sm font-medium">Inquiry Type</label>
-                    <select id="inquiryType" value={formData.inquiryType} onChange={handleChange} className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow">
-                        <option>General Inquiry</option>
-                        <option>Project Request</option>
-                        <option>Support</option>
-                    </select>
-                </div>
-            </div>
-            <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium">Message</label>
-                <textarea id="message" value={formData.message} onChange={handleChange} rows={5} className={`w-full px-4 py-3 rounded-md border ${errors.message ? 'border-red-500' : 'border-input'} bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow resize-none`} placeholder="Tell us about your project..."></textarea>
-                {errors.message && <p className="text-red-500 text-xs">{errors.message}</p>}
-            </div>
-            <div className="flex items-center space-x-2">
-                <input type="checkbox" id="privacy" checked={formData.privacy} onChange={handleChange} className={`h-4 w-4 rounded ${errors.privacy ? 'border-red-500' : 'border-gray-300'} text-primary focus:ring-primary`} />
-                <label htmlFor="privacy" className="text-sm text-muted-foreground">
-                    I agree to the <a href="/privacy" className="underline hover:text-primary">Privacy Policy</a>.
-                </label>
-            </div>
-            {errors.privacy && <p className="text-red-500 text-xs">{errors.privacy}</p>}
-            <button type="submit" disabled={isSubmitting} className="btn-primary w-full">
-                {isSubmitting ? 'Submitting...' : 'Send Message'}
-            </button>
-            {submitStatus === 'success' && 
-                <div className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
-                    <p>Message sent successfully!</p>
-                </div>
-            }
-            {submitStatus === 'error' && 
-                <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
-                    <p>Failed to send message. Please try again.</p>
-                </div>
-            }
-        </form>
+    <div className="industrial-border bg-card overflow-hidden relative">
+      <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
+      
+      {/* Form Header */}
+      <div className="relative z-10 px-8 py-5 border-b border-border/50 flex items-center justify-between">
+        <div>
+          <p className="text-[9px] font-black uppercase tracking-[0.3em] text-primary/60 mb-1">INQUIRY FORM</p>
+          <h3 className="text-xl font-display font-black tracking-tighter uppercase">Start Your Project</h3>
+        </div>
+        <div className="p-3 rounded-xl bg-primary/5 border border-primary/10 text-primary">
+          <Send className="w-5 h-5" />
+        </div>
+      </div>
+
+      {/* Form Body */}
+      <form className="relative z-10 p-8 space-y-5" onSubmit={handleSubmit}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="space-y-1.5">
+            <label htmlFor="firstName" className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">First Name</label>
+            <input type="text" id="firstName" value={formData.firstName} onChange={handleChange} className={inputClasses(!!errors.firstName)} placeholder="John" />
+            {errors.firstName && <p className="text-red-500 text-[10px] font-bold">{errors.firstName}</p>}
+          </div>
+          <div className="space-y-1.5">
+            <label htmlFor="lastName" className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Last Name</label>
+            <input type="text" id="lastName" value={formData.lastName} onChange={handleChange} className={inputClasses(!!errors.lastName)} placeholder="Doe" />
+            {errors.lastName && <p className="text-red-500 text-[10px] font-bold">{errors.lastName}</p>}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="space-y-1.5">
+            <label htmlFor="email" className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Email</label>
+            <input type="email" id="email" value={formData.email} onChange={handleChange} className={inputClasses(!!errors.email)} placeholder="john@example.com" />
+            {errors.email && <p className="text-red-500 text-[10px] font-bold">{errors.email}</p>}
+          </div>
+          <div className="space-y-1.5">
+            <label htmlFor="phone" className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Phone Number</label>
+            <input type="tel" id="phone" value={formData.phone} onChange={handleChange} className={inputClasses(!!errors.phone)} placeholder="+91 234 567 890" />
+            {errors.phone && <p className="text-red-500 text-[10px] font-bold">{errors.phone}</p>}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="space-y-1.5">
+            <label htmlFor="company" className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Company Name</label>
+            <input type="text" id="company" value={formData.company} onChange={handleChange} className={inputClasses(false)} placeholder="Your Company" />
+          </div>
+          <div className="space-y-1.5">
+            <label htmlFor="inquiryType" className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Inquiry Type</label>
+            <select id="inquiryType" value={formData.inquiryType} onChange={handleChange} className={inputClasses(false)}>
+              <option>General Inquiry</option>
+              <option>Project Request</option>
+              <option>Support</option>
+              <option>Partnership</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="space-y-1.5">
+          <label htmlFor="message" className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Message</label>
+          <textarea id="message" value={formData.message} onChange={handleChange} rows={5} className={`${inputClasses(!!errors.message)} resize-none`} placeholder="Tell us about your project requirements..."></textarea>
+          {errors.message && <p className="text-red-500 text-[10px] font-bold">{errors.message}</p>}
+        </div>
+
+        <div className="flex items-center space-x-3">
+          <input type="checkbox" id="privacy" checked={formData.privacy} onChange={handleChange} className={`h-4 w-4 rounded border-2 ${errors.privacy ? 'border-red-500' : 'border-border'} text-primary focus:ring-primary accent-primary`} />
+          <label htmlFor="privacy" className="text-[11px] text-muted-foreground font-medium">
+            I agree to the <a href="/privacy" className="text-primary hover:underline font-bold">Privacy Policy</a>.
+          </label>
+        </div>
+        {errors.privacy && <p className="text-red-500 text-[10px] font-bold">{errors.privacy}</p>}
+
+        <button 
+          type="submit" 
+          disabled={isSubmitting} 
+          className="w-full flex items-center justify-center gap-3 py-4 bg-primary text-primary-foreground text-sm font-black uppercase tracking-[0.2em] hover:bg-primary/90 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isSubmitting ? (
+            <>
+              <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+              SUBMITTING...
+            </>
+          ) : (
+            <>
+              INITIALIZE CONTACT
+              <ArrowRight className="w-4 h-4" />
+            </>
+          )}
+        </button>
+
+        {submitStatus === 'success' && 
+          <div className="p-4 industrial-border bg-emerald-500/5 border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold text-center">
+            ✓ Message transmitted successfully. We'll respond within 24 hours.
+          </div>
+        }
+        {submitStatus === 'error' && 
+          <div className="p-4 industrial-border bg-red-500/5 border-red-500/20 text-red-600 dark:text-red-400 text-sm font-bold text-center">
+            ✕ Transmission failed. Please try again.
+          </div>
+        }
+      </form>
     </div>
   )
 }

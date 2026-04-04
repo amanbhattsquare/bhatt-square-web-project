@@ -10,17 +10,30 @@ import {
   ShieldCheck, 
   BarChart, 
   Cpu, 
-  Settings, 
-  Users, 
+  Users,
+  Settings,
   Layers,
-  CheckCircle2
+  ArrowUpRight,
+  Plus,
+  Zap
 } from "lucide-react"
+import React from "react"
 
-const serviceCategories = [
+interface ServiceCategory {
+  title: string
+  icon: any
+  description: string
+  services: string[]
+  colSpan?: string
+  rowSpan?: string
+  accentText?: string
+}
+
+const serviceCategories: ServiceCategory[] = [
   {
     title: "Software Development",
     icon: Code2,
-    description: "Tailored software solutions designed to solve your complex business problems with scalable and efficient code.",
+    description: "Custom enterprise solutions engineered with scalable architectures and modular code.",
     services: [
       "Custom Software Development",
       "ERP Software Development",
@@ -28,15 +41,15 @@ const serviceCategories = [
       "Inventory Management Software",
       "Billing & Accounting Software",
       "Furniture Management Software",
-      "School / Hospital / Hotel Management Software",
+      "School / Hospital / Hotel Management",
       "POS (Point of Sale) Software"
     ],
-    color: "bg-blue-500/10 text-blue-500"
+    accentText: "ENTERPRISE READY"
   },
   {
     title: "Web Development",
     icon: Globe,
-    description: "Modern, responsive websites and complex web applications built using the latest technologies and frameworks.",
+    description: "Modern, responsive web ecosystems built using high-performance frameworks.",
     services: [
       "Website Design & Development",
       "Static Website Development",
@@ -44,27 +57,27 @@ const serviceCategories = [
       "E-commerce Website Development",
       "Corporate Websites",
       "Web Portals & Dashboards",
-      "Website Redesign & Maintenance"
+      "Maintenance & Redesign"
     ],
-    color: "bg-emerald-500/10 text-emerald-500"
+    accentText: "0.1s RESPONSE"
   },
   {
     title: "Mobile App Development",
     icon: Smartphone,
-    description: "Creating seamless mobile experiences across Android and iOS with high performance and intuitive UX.",
+    description: "Seamless mobile performance across iOS and Android with intuitive user experiences.",
     services: [
       "Android App Development",
       "iOS App Development",
-      "Hybrid App Development (Flutter / React Native)",
+      "Hybrid App (Flutter / React Native)",
       "Business Apps",
       "E-commerce Mobile Apps"
     ],
-    color: "bg-purple-500/10 text-purple-500"
+    accentText: "NATIVE CORE"
   },
   {
     title: "UI / UX & Graphics",
     icon: Palette,
-    description: "Crafting beautiful interfaces and compelling visual designs that enhance user engagement and brand identity.",
+    description: "Designing beautiful digital interfaces and compelling visual identities.",
     services: [
       "UI / UX Design",
       "Website & App Design",
@@ -73,12 +86,12 @@ const serviceCategories = [
       "Brochure / Pamphlet Design",
       "Social Media Creatives"
     ],
-    color: "bg-pink-500/10 text-pink-500"
+    accentText: "DESIGN FIRST"
   },
   {
     title: "Cloud & DevOps",
     icon: Cloud,
-    description: "Optimizing your infrastructure with secure cloud hosting, seamless deployments, and scalable server management.",
+    description: "Optimizing infrastructure with secure hosting and automated deployment pipelines.",
     services: [
       "Cloud Hosting Services",
       "AWS / Azure / Google Cloud Setup",
@@ -86,12 +99,12 @@ const serviceCategories = [
       "Backup & Recovery Solutions",
       "DevOps & CI/CD Pipelines"
     ],
-    color: "bg-cyan-500/10 text-cyan-500"
+    accentText: "99.9% UPTIME"
   },
   {
-    title: "Cyber Security Services",
+    title: "Cyber security Services",
     icon: ShieldCheck,
-    description: "Protecting your digital assets with advanced security protocols, audits, and real-time threat detection.",
+    description: "Protecting digital assets with advanced security protocols and real-time audits.",
     services: [
       "Website Security",
       "SSL Certificate Setup",
@@ -99,63 +112,63 @@ const serviceCategories = [
       "Malware Removal",
       "Security Audits"
     ],
-    color: "bg-rose-500/10 text-rose-500"
+    accentText: "GLOBAL SECURITY"
   },
   {
     title: "Digital Marketing",
     icon: BarChart,
-    description: "Boosting your online presence and driving growth through data-driven marketing strategies and SEO.",
+    description: "Strategic growth frameworks and performance marketing to dominate your sector.",
     services: [
       "SEO (Search Engine Optimization)",
       "Social Media Marketing",
       "Google Ads & Facebook Ads",
       "Lead Generation Campaigns",
       "Email & WhatsApp Marketing",
-      "Online Reputation Management"
+      "Reputation Management"
     ],
-    color: "bg-orange-500/10 text-orange-500"
+    accentText: "GROWTH FOCUSED"
   },
   {
     title: "AI & Automation",
     icon: Cpu,
-    description: "Leveraging artificial intelligence and automation to streamline operations and unlock business insights.",
+    description: "Leveraging intelligence and automation to unlock business efficiency.",
     services: [
       "AI Chatbot Development",
       "Business Automation",
       "Data Analytics & Reporting",
       "Machine Learning Solutions"
     ],
-    color: "bg-indigo-500/10 text-indigo-500"
+    accentText: "NEURAL COMPUTE"
   },
   {
     title: "IT Support & Maintenance",
     icon: Settings,
-    description: "Providing 24/7 technical support and proactive maintenance to keep your systems running smoothly.",
+    description: "Providing 24/7 technical support to keep your operations running smoothly.",
     services: [
-      "AMC (Annual Maintenance Contract)",
+      "AMC (Annual Maintenance)",
       "Software Support",
       "Website Maintenance",
       "Server Monitoring",
       "Technical Helpdesk"
     ],
-    color: "bg-amber-500/10 text-amber-500"
+    accentText: "SYSTEM ACTIVE"
   },
   {
     title: "Consulting & Training",
     icon: Users,
-    description: "Expert IT consulting and comprehensive training programs to empower your team and optimize processes.",
+    description: "Strategic advisory and comprehensive training programs for digital empowerment.",
     services: [
       "IT Consulting",
-      "Business Process Automation",
+      "Process Automation Advisory",
       "Software Training",
       "Corporate IT Training"
     ],
-    color: "bg-teal-500/10 text-teal-500"
+    accentText: "STRATEGIC ADVICE"
   },
   {
     title: "Other Services",
     icon: Layers,
-    description: "Essential business services including hosting, domain registration, and API integrations.",
+    description: "Essential business services including hosting, domains, and API integrations.",
     services: [
       "Domain Registration",
       "Web Hosting",
@@ -163,39 +176,78 @@ const serviceCategories = [
       "SMS & WhatsApp API Integration",
       "Payment Gateway Integration"
     ],
-    color: "bg-slate-500/10 text-slate-500"
+    accentText: "FULL STACK SOLUTIONS"
   }
 ]
 
 export function FullServicesList() {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 relative dot-grid bg-background/50">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {serviceCategories.map((category, index) => (
             <motion.div
-              key={index}
+              key={category.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
               viewport={{ once: true }}
-              className="p-8 rounded-[2rem] border border-border bg-card hover:border-primary/30 transition-all duration-300 group shadow-md hover:shadow-xl"
+              className="group relative industrial-border bg-card p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 min-h-[480px]"
             >
-              <div className={`mb-6 p-4 rounded-2xl w-fit ${category.color}`}>
-                <category.icon className="w-8 h-8" />
+              {/* Card Header Profile */}
+              <div className="relative z-10 flex justify-between items-start mb-12">
+                 <div className="p-3 rounded-full bg-primary/5 border border-primary/10 transition-colors group-hover:bg-primary/10">
+                    <category.icon className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
+                 </div>
+                 <div className="flex items-center gap-2 text-[10px] font-display font-black uppercase tracking-[0.25em] text-foreground/70">
+                    <Zap className="w-3 h-3 text-primary" />
+                    {category.accentText}
+                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3">{category.title}</h3>
-              <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
-                {category.description}
-              </p>
-              <ul className="space-y-3">
-                {category.services.map((service, idx) => (
-                  <li key={idx} className="flex items-start gap-3 group/item">
-                    <CheckCircle2 className="w-5 h-5 text-primary/40 group-hover/item:text-primary transition-colors shrink-0 mt-0.5" />
-                    <span className="text-sm text-foreground/80">{service}</span>
-                  </li>
-                ))}
-              </ul>
+
+              {/* Main Content */}
+              <div className="relative z-10 space-y-6">
+                <h2 className="text-2xl md:text-3xl font-black tracking-tighter uppercase leading-[1.1] mb-6 text-foreground group-hover:text-primary transition-colors">
+                  {category.title}
+                </h2>
+                
+                <p className="text-muted-foreground text-sm font-semibold leading-relaxed max-w-[280px]">
+                  {category.description}
+                </p>
+
+                <div className="space-y-3 pt-6">
+                  <p className="text-[9px] font-black uppercase tracking-[0.3em] text-primary/60">Key Highlights</p>
+                  <ul className="space-y-3">
+                    {category.services.map((service, idx) => (
+                      <li key={idx} className="flex items-center gap-3 text-[10px] font-display font-bold uppercase tracking-wider text-foreground/80">
+                        <Plus className="w-3 h-3 text-primary flex-shrink-0" />
+                        {service}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Card Footer Action */}
+              <div className="relative z-10 mt-12 pt-8 border-t border-border/50">
+                 <motion.a 
+                    href="/contact"
+                    className="inline-flex items-center gap-4 text-xs font-black uppercase tracking-[0.3em] text-foreground hover:text-primary transition-all group/link"
+                  >
+                    CONFIGURE PROJECT
+                    <div className="p-1.5 border border-border rounded-lg group-hover/link:border-primary transition-colors">
+                        <ArrowUpRight className="w-3 h-3" />
+                    </div>
+                  </motion.a>
+              </div>
+
+              {/* Background Numbering */}
+              <span className="card-num select-none pointer-events-none mb-2">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
+              {/* Subtle hover background accent */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
             </motion.div>
           ))}
         </div>

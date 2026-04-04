@@ -156,7 +156,7 @@ function AboutPageContent() {
       </section>
 
       {/* Company Story */}
-      <section className="py-20">
+      <section className="py-15">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
@@ -209,7 +209,7 @@ function AboutPageContent() {
       </section>
 
       {/* Core Values */}
-      <section ref={valuesRef} className="py-20 bg-muted/30">
+      <section ref={valuesRef} className="py-15 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="section-heading">
@@ -224,19 +224,32 @@ function AboutPageContent() {
             {coreValues.map((value, index) => (
               <div
                 key={index}
-                className="value-card group relative p-8 rounded-2xl bg-card border border-border hover:border-primary/40 transition-all duration-400 hover:shadow-lg hover:-translate-y-1"
+                className="value-card group relative p-7 industrial-border bg-card overflow-hidden transition-all duration-400 hover:shadow-2xl hover:shadow-primary/5"
               >
-                <div className="relative z-10">
-                  <div className={`mb-6 p-4 rounded-xl bg-gradient-to-br ${value.color} w-fit shadow-md`}>
-                    <value.icon className="w-7 h-7 text-white" />
+                <div className="absolute inset-0 dot-grid opacity-30 group-hover:opacity-50 transition-opacity" />
+                
+                <div className="relative z-10 space-y-5">
+                  {/* Icon + Number Row */}
+                  <div className="flex items-center justify-between">
+                    <div className="p-3 w-max rounded-xl bg-primary/5 border border-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                      <value.icon className="w-6 h-6" />
+                    </div>
+                    <span className="font-display font-black italic text-5xl text-foreground opacity-[0.07] group-hover:opacity-[0.15] transition-opacity leading-none select-none">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
                   </div>
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                    {value.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed text-sm">
-                    {value.description}
-                  </p>
+                  
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-display font-black tracking-tighter uppercase group-hover:text-primary transition-colors leading-tight">
+                      {value.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed text-xs font-semibold max-w-sm">
+                      {value.description}
+                    </p>
+                  </div>
                 </div>
+
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
               </div>
             ))}
           </div>
@@ -246,7 +259,7 @@ function AboutPageContent() {
       
 
       {/* Timeline/Milestones */}
-      <section ref={timelineRef} className="py-20 bg-muted/30 relative overflow-hidden">
+      <section ref={timelineRef} className="py-15 bg-muted/30 relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="section-heading">

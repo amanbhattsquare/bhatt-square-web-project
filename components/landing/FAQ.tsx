@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, HelpCircle, Plus } from "lucide-react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -67,30 +67,43 @@ export function FAQ() {
     <section ref={sectionRef} className="py-15 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.4em] mb-6">
+              <HelpCircle className="w-3 h-3" />
+              KNOWLEDGE BASE
+          </div>
           <h2 className="section-heading">
-            Frequently Asked <span className="text-primary">Questions</span>
+            Frequently Asked <span className="text-primary italic">Questions</span>
           </h2>
           <p className="section-subheading">
             Got questions? We've got answers. Find everything you need to know about working with us.
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="max-w-3xl mx-auto space-y-3">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="faq-item rounded-xl border border-border bg-card overflow-hidden transition-all duration-300 hover:border-primary/50"
+              className={`faq-item overflow-hidden bg-card border transition-all duration-300 rounded-2xl ${
+                openIndex === index ? 'border-primary/40 shadow-lg shadow-primary/5' : 'border-border/80 hover:border-primary/30'
+              }`}
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full flex items-center justify-between p-6 text-left transition-colors hover:bg-muted/50"
+                className="w-full flex items-center justify-between p-6 text-left transition-colors hover:bg-muted/30"
               >
-                <span className="font-semibold text-lg pr-8">{faq.question}</span>
-                <ChevronDown
-                  className={`w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300 ${
-                    openIndex === index ? 'rotate-180' : ''
-                  }`}
-                />
+                <div className="flex items-center gap-4 pr-6">
+                  <span className="font-display font-black italic text-lg text-primary/20">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span className="text-sm font-black uppercase tracking-wide">{faq.question}</span>
+                </div>
+                <div className={`flex-shrink-0 w-8 h-8 rounded-xl border flex items-center justify-center transition-all duration-300 ${
+                  openIndex === index 
+                    ? 'border-primary bg-primary text-white rotate-45' 
+                    : 'border-border text-muted-foreground'
+                }`}>
+                  <Plus className="w-4 h-4" />
+                </div>
               </button>
               
               <div
@@ -98,7 +111,7 @@ export function FAQ() {
                   openIndex === index ? 'max-h-96' : 'max-h-0'
                 }`}
               >
-                <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
+                <div className="px-6 pb-6 pl-16 text-sm text-muted-foreground leading-relaxed font-medium">
                   {faq.answer}
                 </div>
               </div>

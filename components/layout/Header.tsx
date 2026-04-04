@@ -9,11 +9,11 @@ import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 
 const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "Services", href: "/services" },
-  { name: "Products", href: "/products" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
+  { name: "HOME", href: "/" },
+  { name: "SERVICES", href: "/services" },
+  { name: "PRODUCTS", href: "/products" },
+  { name: "ABOUT", href: "/about" },
+  { name: "CONTACT", href: "/contact" },
 ]
 
 export function Header() {
@@ -136,7 +136,7 @@ export function Header() {
               href="/contact" 
               className="inline-flex items-center h-10 px-6 rounded-xl bg-primary text-primary-foreground text-sm font-bold transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:scale-95"
             >
-              Get Started
+              GET STARTED
             </Link>
           </div>
 
@@ -229,7 +229,7 @@ export function Header() {
                   onClick={toggleMenu}
                   className="w-full flex items-center justify-center p-4 bg-primary text-white rounded-2xl font-black text-center shadow-lg shadow-primary/20"
                 >
-                  Start Your Project
+                  START YOUR PROJECT
                 </Link>
               </div>
             </motion.div>
