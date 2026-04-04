@@ -6,10 +6,10 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 const stats = [
-  { icon: Users, label: "GLOBAL CLIENTS", value: 150, suffix: "+" },
-  { icon: Award, label: "ELITE PROJECTS", value: 200, suffix: "+" },
+  { icon: Users, label: "GLOBAL CLIENTS", value: 50, suffix: "+" },
+  { icon: Award, label: "ELITE PROJECTS", value: 100, suffix: "+" },
   { icon: TrendingUp, label: "STABILITY RATE", value: 99, suffix: "%" },
-  { icon: Zap, label: "CORE EXPERIENCE", value: 5, suffix: "YR+" },
+  { icon: Zap, label: "CORE EXPERIENCE", value: 2, suffix: "YR+" },
 ]
 
 export function StatsMetrics() {
