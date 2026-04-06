@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Send, ArrowRight } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -51,9 +52,25 @@ export function ContactForm() {
     if (validate()) {
       setIsSubmitting(true);
       setSubmitStatus(null);
+
+      const templateParams = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        inquiryType: formData.inquiryType,
+        message: formData.message,
+      };
+
       try {
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        console.log("Form submitted:", formData);
+        await emailjs.send(
+          'service_9jk7iye', // Yahan apna Service ID daalein
+          'template_n9m2bpo', // Yahan naye contact template ki ID daalein
+          templateParams,
+          'BkZhcVM_mZX_W_8Qr' // Yahan apna Public Key daalein
+        );
+
         setSubmitStatus('success');
         setFormData({
           firstName: '', lastName: '', email: '', phone: '', 
@@ -61,6 +78,7 @@ export function ContactForm() {
         });
         setErrors({});
       } catch (error) {
+        console.error("EmailJS error:", error);
         setSubmitStatus('error');
       } finally {
         setIsSubmitting(false);
@@ -91,12 +109,12 @@ export function ContactForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="space-y-1.5">
             <label htmlFor="firstName" className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">First Name</label>
-            <input type="text" id="firstName" value={formData.firstName} onChange={handleChange} className={inputClasses(!!errors.firstName)} placeholder="John" />
+            <input type="text" id="firstName" name="firstName" value={formData.firstName} onChange={handleChange} className={inputClasses(!!errors.firstName)} placeholder="John" />
             {errors.firstName && <p className="text-red-500 text-[10px] font-bold">{errors.firstName}</p>}
           </div>
           <div className="space-y-1.5">
             <label htmlFor="lastName" className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Last Name</label>
-            <input type="text" id="lastName" value={formData.lastName} onChange={handleChange} className={inputClasses(!!errors.lastName)} placeholder="Doe" />
+            <input type="text" id="lastName" name="lastName" value={formData.lastName} onChange={handleChange} className={inputClasses(!!errors.lastName)} placeholder="Doe" />
             {errors.lastName && <p className="text-red-500 text-[10px] font-bold">{errors.lastName}</p>}
           </div>
         </div>
@@ -104,12 +122,12 @@ export function ContactForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="space-y-1.5">
             <label htmlFor="email" className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Email</label>
-            <input type="email" id="email" value={formData.email} onChange={handleChange} className={inputClasses(!!errors.email)} placeholder="john@example.com" />
+            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className={inputClasses(!!errors.email)} placeholder="john@example.com" />
             {errors.email && <p className="text-red-500 text-[10px] font-bold">{errors.email}</p>}
           </div>
           <div className="space-y-1.5">
             <label htmlFor="phone" className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Phone Number</label>
-            <input type="tel" id="phone" value={formData.phone} onChange={handleChange} className={inputClasses(!!errors.phone)} placeholder="+91 234 567 890" />
+            <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} className={inputClasses(!!errors.phone)} placeholder="+91 234 567 890" />
             {errors.phone && <p className="text-red-500 text-[10px] font-bold">{errors.phone}</p>}
           </div>
         </div>
@@ -117,11 +135,11 @@ export function ContactForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="space-y-1.5">
             <label htmlFor="company" className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Company Name</label>
-            <input type="text" id="company" value={formData.company} onChange={handleChange} className={inputClasses(false)} placeholder="Your Company" />
+            <input type="text" id="company" name="company" value={formData.company} onChange={handleChange} className={inputClasses(false)} placeholder="Your Company" />
           </div>
           <div className="space-y-1.5">
             <label htmlFor="inquiryType" className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Inquiry Type</label>
-            <select id="inquiryType" value={formData.inquiryType} onChange={handleChange} className={inputClasses(false)}>
+            <select id="inquiryType" name="inquiryType" value={formData.inquiryType} onChange={handleChange} className={inputClasses(false)}>
               <option>General Inquiry</option>
               <option>Project Request</option>
               <option>Support</option>
@@ -132,7 +150,7 @@ export function ContactForm() {
 
         <div className="space-y-1.5">
           <label htmlFor="message" className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Message</label>
-          <textarea id="message" value={formData.message} onChange={handleChange} rows={5} className={`${inputClasses(!!errors.message)} resize-none`} placeholder="Tell us about your project requirements..."></textarea>
+          <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows={5} className={`${inputClasses(!!errors.message)} resize-none`} placeholder="Tell us about your project requirements..."></textarea>
           {errors.message && <p className="text-red-500 text-[10px] font-bold">{errors.message}</p>}
         </div>
 
