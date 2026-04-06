@@ -106,6 +106,35 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Certifications & Recognitions */}
+        <div className="py-10 border-t border-border/50">
+          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8">
+            <Link href="https://www.mca.gov.in/" target="_blank" rel="noopener noreferrer" className="bg-white/90 hover:bg-white transition-colors p-3 rounded flex items-center justify-center w-[140px] h-[60px] grayscale hover:grayscale-0 duration-300 border border-white/20 group hover:shadow-lg hover:-translate-y-1">
+              <img src="/images/mca-logo.jpg" alt="Ministry of Corporate Affairs" className="max-h-[45px] object-contain group-hover:scale-105 transition-all duration-300 px-1" />
+            </Link>
+            
+            <Link href="https://gem.gov.in/" target="_blank" rel="noopener noreferrer" className="bg-white/90 hover:bg-white transition-colors p-3 rounded flex items-center justify-center w-[140px] h-[60px] grayscale hover:grayscale-0 duration-300 border border-white/20 group hover:shadow-lg hover:-translate-y-1">
+              <img src="/images/gem-logo.jpg" alt="GeM - Government e Marketplace" className="max-h-[45px] object-contain group-hover:scale-105 transition-all duration-300 px-1" />
+            </Link>
+
+            <Link href="https://www.iso.org/iso-9001-quality-management.html" target="_blank" rel="noopener noreferrer" className="bg-white/90 hover:bg-white transition-colors p-3 rounded flex items-center justify-center w-[160px] h-[60px] grayscale hover:grayscale-0 duration-300 border border-white/20 group hover:shadow-lg hover:-translate-y-1">
+              <img src="/images/iso-logo.jpg" alt="ISO 9001:2015 Certified" className="max-h-[45px] object-contain group-hover:scale-105 transition-all duration-300 px-1" />
+            </Link>
+
+            <Link href="https://www.startupindia.gov.in/" target="_blank" rel="noopener noreferrer" className="bg-white/90 hover:bg-white transition-colors p-3 rounded flex items-center justify-center w-[140px] h-[60px] grayscale hover:grayscale-0 duration-300 border border-white/20 group hover:shadow-lg hover:-translate-y-1">
+              <img src="/images/startup-india-logo.jpg" alt="Startup India" className="max-h-[45px] object-contain group-hover:scale-105 transition-all duration-300 px-1" />
+            </Link>
+
+            <Link href="https://msme.gov.in/" target="_blank" rel="noopener noreferrer" className="bg-white/90 hover:bg-white transition-colors p-3 rounded flex items-center justify-center w-[140px] h-[60px] grayscale hover:grayscale-0 duration-300 border border-white/20 group hover:shadow-lg hover:-translate-y-1">
+              <img src="/images/msme-logo.jpg" alt="MSME" className="max-h-[45px] object-contain group-hover:scale-105 transition-all duration-300 px-1" />
+            </Link>
+
+            <Link href="https://digitalindia.gov.in/" target="_blank" rel="noopener noreferrer" className="bg-white/90 hover:bg-white transition-colors p-3 rounded flex items-center justify-center w-[140px] h-[60px] grayscale hover:grayscale-0 duration-300 border border-white/20 group hover:shadow-lg hover:-translate-y-1">
+              <img src="/images/digital-india-logo.jpg" alt="Digital India" className="max-h-[45px] object-contain group-hover:scale-105 transition-all duration-300 px-1" />
+            </Link>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
         <div className="pt-6 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase text-center md:text-left flex flex-wrap items-center justify-center md:justify-start gap-1">
