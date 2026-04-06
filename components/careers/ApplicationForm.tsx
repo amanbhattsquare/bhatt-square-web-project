@@ -3,6 +3,7 @@
 import { useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Send, User, Mail, Phone, Link2, FileText, Briefcase, PlusCircle, CheckCircle2, Loader2, Info, ChevronDown, Upload, FileUp } from "lucide-react"
+import emailjs from "@emailjs/browser"
 
 const commonPositions = [
     "Full Stack Developer",
@@ -22,26 +23,39 @@ const commonPositions = [
 export function ApplicationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [uploadedFileName, setUploadedFileName] = useState<string | null>(null)
   const formRef = useRef<HTMLFormElement>(null)
-  const fileInputRef = useRef<HTMLInputElement>(null)
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (file) {
-        setUploadedFileName(file.name)
-    }
-  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate professional application processing
-    setTimeout(() => {
-        setIsSubmitting(false)
-        setIsSubmitted(true)
-    }, 2000)
+    if (formRef.current) {
+        const formData = new FormData(formRef.current);
+        const templateParams = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            comms: formData.get('comms'),
+            position: formData.get('position'),
+            identity: formData.get('identity'),
+            cover_note: formData.get('cover_note'),
+            resume_link: formData.get('resume_link')
+        };
+
+        emailjs.send(
+            'service_9jk7iye',
+            'template_22ynhkf',
+            templateParams,
+            'BkZhcVM_mZX_W_8Qr'
+        )
+        .then((result) => {
+            console.log(result.text);
+            setIsSubmitting(false)
+            setIsSubmitted(true)
+        }, (error) => {
+            console.log(error.text);
+            setIsSubmitting(false)
+        });
+    }
   }
 
   return (
@@ -115,12 +129,12 @@ export function ApplicationForm() {
                                 onSubmit={handleSubmit}
                             >
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                    <FormInputField label="Full Name" icon={User} placeholder="Jane Doe" id="name" />
-                                    <FormInputField label="Email Address" icon={Mail} placeholder="jane@example.com" type="email" id="email" />
+                                    <FormInputField label="Full Name" icon={User} placeholder="Jane Doe" id="name" name="name" />
+                                    <FormInputField label="Email Address" icon={Mail} placeholder="jane@example.com" type="email" id="email" name="email" />
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                    <FormInputField label="Phone Number" icon={Phone} placeholder="+1 (555) 000-0000" type="tel" id="comms" />
+                                    <FormInputField label="Phone Number" icon={Phone} placeholder="+1 (555) 000-0000" type="tel" id="comms" name="comms" />
                                     <div className="space-y-2">
                                         <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 pl-1">
                                             Position
@@ -129,6 +143,7 @@ export function ApplicationForm() {
                                             <Briefcase className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/50 z-10" />
                                             <select 
                                                 required
+                                                name="position"
                                                 className="w-full bg-muted/20 border border-border/60 rounded-2xl py-4 pl-14 pr-12 text-[13px] font-bold uppercase appearance-none focus:border-primary/40 focus:ring-4 focus:ring-primary/5 transition-all outline-none cursor-pointer text-foreground"
                                             >
                                                 {commonPositions.map((pos) => (
@@ -141,37 +156,8 @@ export function ApplicationForm() {
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                    <FormInputField label="Portfolio Link" icon={Link2} placeholder="https://behance.net/jane" type="url" id="identity" />
-                                    
-                                    {/* Resume Upload Field */}
-                                    <div className="space-y-2">
-                                        <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 pl-1">
-                                            Resume / CV (PDF)
-                                        </label>
-                                        <div className="relative group/field">
-                                            <input 
-                                                type="file" 
-                                                className="hidden" 
-                                                ref={fileInputRef}
-                                                onChange={handleFileChange}
-                                                accept=".pdf"
-                                                required
-                                            />
-                                            <button 
-                                                type="button"
-                                                onClick={() => fileInputRef.current?.click()}
-                                                className={`w-full flex items-center justify-between gap-4 px-5 py-4 border rounded-2xl transition-all duration-300 bg-muted/20 border-border/60 hover:border-primary/40 hover:bg-muted/30 group/btn`}
-                                            >
-                                                <div className="flex items-center gap-4 truncate">
-                                                    <FileUp className="w-4 h-4 text-muted-foreground/50 group-hover/btn:text-primary transition-colors shrink-0" />
-                                                    <span className={`text-[12px] uppercase tracking-wider font-bold truncate ${uploadedFileName ? 'text-foreground' : 'text-muted-foreground/40'}`}>
-                                                        {uploadedFileName || "Upload PDF Resume"}
-                                                    </span>
-                                                </div>
-                                                <Upload className="w-4 h-4 text-muted-foreground/30 group-hover/btn:text-primary transition-colors" />
-                                            </button>
-                                        </div>
-                                    </div>
+                                    <FormInputField label="Portfolio Link" icon={Link2} placeholder="https://behance.net/jane" type="url" id="identity" name="identity" />
+                                    <FormInputField label="Resume / CV (Link)" icon={FileText} placeholder="drive.google.com/..." type="url" id="resume_link" name="resume_link" />
                                 </div>
 
                                 <div className="space-y-2">
@@ -181,6 +167,7 @@ export function ApplicationForm() {
                                     <textarea 
                                         rows={4}
                                         required
+                                        name="cover_note"
                                         placeholder="Briefly tell us why you want to join Bhatt Square..."
                                         className="w-full bg-muted/20 border border-border/60 rounded-[2rem] py-5 px-6 text-[13px] font-medium placeholder:text-muted-foreground/30 focus:border-primary/40 focus:ring-4 focus:ring-primary/5 transition-all outline-none resize-none text-foreground"
                                     ></textarea>
@@ -247,7 +234,7 @@ export function ApplicationForm() {
   )
 }
 
-function FormInputField({ label, icon: Icon, placeholder, type = "text", id }: any) {
+function FormInputField({ label, icon: Icon, placeholder, type = "text", id, name }: any) {
     return (
         <div className="space-y-2">
             <label htmlFor={id} className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 pl-1">
@@ -257,6 +244,7 @@ function FormInputField({ label, icon: Icon, placeholder, type = "text", id }: a
                 <Icon className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/50 group-focus-within/field:text-primary transition-colors duration-300" />
                 <input 
                     id={id}
+                    name={name}
                     required
                     type={type} 
                     placeholder={placeholder} 
@@ -266,5 +254,3 @@ function FormInputField({ label, icon: Icon, placeholder, type = "text", id }: a
         </div>
     )
 }
-
-

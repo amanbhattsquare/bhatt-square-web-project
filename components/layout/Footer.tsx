@@ -45,10 +45,10 @@ export function Footer() {
             </p>
             
             <div className="flex items-center space-x-3 pt-2">
-               <SocialLink href="#" icon={<Linkedin className="w-4 h-4" />} label="LinkedIn" />
-               <SocialLink href="#" icon={<Twitter className="w-4 h-4" />} label="Twitter" />
-               <SocialLink href="#" icon={<Instagram className="w-4 h-4" />} label="Instagram" />
-               <SocialLink href="#" icon={<Facebook className="w-4 h-4" />} label="Facebook" />
+               <SocialLink href="https://in.linkedin.com/company/bhatt-square" icon={<Linkedin className="w-4 h-4" />} label="LinkedIn" />
+               <SocialLink href="https://twitter.com/bhattsquare" icon={<Twitter className="w-4 h-4" />} label="Twitter" />
+               <SocialLink href="https://www.instagram.com/bhattsquare" icon={<Instagram className="w-4 h-4" />} label="Instagram" />
+               <SocialLink href="https://www.facebook.com/BhattSquareIT" icon={<Facebook className="w-4 h-4" />} label="Facebook" />
             </div>
           </div>
 

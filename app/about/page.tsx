@@ -193,15 +193,11 @@ function AboutPageContent() {
 
             <div className="relative">
               <div className="aspect-square lg:aspect-[4/3] bg-gradient-to-br from-primary/10 via-indigo-500/10 to-rose-500/10 rounded-3xl overflow-hidden relative border border-border">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                      <Globe2 className="w-12 h-12 text-primary" />
-                    </div>
-                    <h3 className="text-2xl font-bold mb-2">Global Impact</h3>
-                    <p className="text-muted-foreground">Serving clients across 3 continents</p>
-                  </div>
-                </div>
+                <img
+                  src="https://images.pexels.com/photos/7652039/pexels-photo-7652039.jpeg"
+                  alt="Global Impact"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
@@ -256,7 +252,41 @@ function AboutPageContent() {
         </div>
       </section>
 
-      
+      <section className="py-15 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="relative">
+              <div className="aspect-square lg:aspect-[4/3] bg-gradient-to-br from-primary/10 via-indigo-500/10 to-rose-500/10 rounded-3xl overflow-hidden relative border border-border">
+                <img
+                  src="https://media.istockphoto.com/id/1500828257/photo/portrait-of-young-confident-indian-teenager-boy-wearing-suit-holding-laptop-in-hand-looking.jpg?b=1&s=612x612&w=0&k=20&c=4eUeH4XRtaC_Ii_FKCxDaKdQZFnox0-bGS-iw_8V-Bc="
+                  alt="CEO"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            <div className="space-y-6">
+              <h2 className="section-heading">
+                Message from Our <span className="text-primary">CEO</span>
+              </h2>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  It is my privilege to lead a team of dedicated professionals who are committed to pushing the boundaries of what's possible. At Bhatt Square, we believe in the power of technology to transform industries and create a better future for all.
+                </p>
+                <p>
+                  Our success is built on a foundation of innovation, integrity, and a relentless pursuit of excellence. We are passionate about helping our clients achieve their goals and are proud of the impact we've made together.
+                </p>
+                <p>
+                  Thank you for your trust in us. We are excited about the journey ahead and look forward to continuing to serve you with the highest standards of quality and service.
+                </p>
+              </div>
+              <div className="pt-6 border-t border-border">
+                <h3 className="text-xl font-bold text-foreground">Akshat Bhatt</h3>
+                <p className="text-sm text-muted-foreground">CEO & Founder, Bhatt Square Pvt Ltd.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Timeline/Milestones */}
       <section ref={timelineRef} className="py-15 bg-muted/30 relative overflow-hidden">
