@@ -41,6 +41,32 @@ const achievements = [
   { year: "2025", milestone: "Market Acceleration", description: "Enhanced our portfolio in professional and technical services, delivering mission-critical solutions to a expanding client base." },
   { year: "2026", milestone: "Global Innovation", description: "Continuing to pioneer industrial-grade digital products and scaling our technical expertise across international markets." }
 ];
+const founders = [
+  {
+    name: "Akshat Bhatt",
+    role: "Managing Director",
+    avatar: "/images/Akshat-Bhatt.png",
+    description: "As the Managing Director, Akshat drives the company's strategic vision, focusing on innovation and scalable solutions. His leadership ensures that Bhatt Square stays at the forefront of the industry, delivering exceptional value to clients."
+  },
+  {
+    name: "Niraj Bhatt",
+    role: "Director",
+    avatar: "/images/Niraj-Bhatt.png",
+    description: "Niraj plays a key role in shaping the company's operational strategies. His expertise in management and execution helps streamline processes, ensuring efficiency and excellence across all projects."
+  },
+  {
+    name: "Pooja Bhatt",
+    role: "Director",
+    avatar: "/images/Pooja-Bhatt.png",
+    description: "Pooja's focus is on fostering a culture of innovation and collaboration. She is instrumental in guiding the team towards achieving technical excellence and maintaining strong client relationships."
+  },
+  {
+    name: "Anandi Bhatt",
+    role: "Director",
+    avatar: "/images/Anandi-Bhatt.png",
+    description: "Anandi contributes to the company's growth by overseeing key business development initiatives. Her strategic insights help identify new opportunities and drive the company's expansion."
+  }
+];
 
 function AboutPageContent() {
   const valuesRef = useRef<HTMLDivElement>(null);
@@ -168,11 +194,11 @@ function AboutPageContent() {
                   Incorporated on <strong className="text-foreground">June 30, 2023</strong>, <strong className="text-foreground">BHATT SQUARE PRIVATE LIMITED</strong> is a premier Indian legal entity registered under the Registrar of Companies in Kanpur. Headquartered in the vibrant hub of Gomti Nagar, Lucknow, we embody a culture of technical rigor and industrial-grade excellence.
                 </p>
                 <p>
-                  Our expertise is rooted in the <strong className="text-foreground">Professional, Scientific, and Technical sectors</strong>. We operate with a mission to architect high-performance digital ecosystems that empower modern enterprises. By merging advanced logic with sophisticated design, we transform complex business requirements into seamless, scalable experiences.
-                </p>
+  Our expertise spans the <strong className="text-foreground">Professional, Scientific, and Technical sectors</strong>, where precision and performance are non-negotiable. We are driven by a singular mission — to engineer robust, high-performance digital solutions that enable modern enterprises to operate smarter and scale with confidence. By uniting advanced engineering principles with purposeful design, we translate complex business challenges into streamlined, future-ready systems.
+</p>
                 <p>
-                  As an <strong className="text-foreground">Active</strong> and forward-thinking organization, we prioritize long-term value creation. Our trajectory is defined by a relentless pursuit of innovation—ensuring that every solution we deploy meets the highest standards of reliability, security, and technical sophistication.
-                </p>
+  As a <strong className="text-foreground">forward-thinking</strong> organization, we are committed to delivering enduring value through disciplined innovation. Our approach is grounded in a steadfast dedication to excellence — ensuring every solution we architect adheres to the highest standards of reliability, security, and technical integrity.
+</p>
               </div>
               
               <div className="grid grid-cols-3 gap-6 pt-6 border-t border-border">
@@ -252,15 +278,17 @@ function AboutPageContent() {
         </div>
       </section>
 
+     
+
       <section className="py-15 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <div className="aspect-square lg:aspect-[4/3] bg-gradient-to-br from-primary/10 via-indigo-500/10 to-rose-500/10 rounded-3xl overflow-hidden relative border border-border">
                 <img
-                  src="https://media.istockphoto.com/id/1500828257/photo/portrait-of-young-confident-indian-teenager-boy-wearing-suit-holding-laptop-in-hand-looking.jpg?b=1&s=612x612&w=0&k=20&c=4eUeH4XRtaC_Ii_FKCxDaKdQZFnox0-bGS-iw_8V-Bc="
+                  src="/images/Akshat-Bhatt.png"
                   alt="CEO"
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-contain"
                 />
               </div>
             </div>
@@ -284,6 +312,41 @@ function AboutPageContent() {
                 <p className="text-sm text-muted-foreground">CEO & Founder, Bhatt Square Pvt Ltd.</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+
+       {/* Founders Section */}
+      <section ref={teamRef} className="py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="section-heading">
+              Meet Our <span className="text-primary">Founders</span>
+            </h2>
+            <p className="section-subheading">
+              The visionary leaders driving our mission forward.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {founders.map((founder, index) => (
+              <div
+                key={index}
+                className="team-card group relative flex flex-col p-6 industrial-border bg-card overflow-hidden transition-all duration-400 hover:shadow-2xl hover:shadow-primary/5"
+              >
+                <div className="absolute inset-0 dot-grid opacity-30 group-hover:opacity-50 transition-opacity" />
+                <div className="relative z-10">
+                  <h3 className="text-xl font-display font-black tracking-tighter uppercase text-foreground group-hover:text-primary transition-colors">
+                    {founder.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground font-medium mb-4">{founder.role}</p>
+                  <p className="text-muted-foreground leading-relaxed text-sm mb-4">
+                    {founder.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

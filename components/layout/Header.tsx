@@ -132,7 +132,7 @@ export function Header() {
               className="inline-flex items-center h-10 px-6 bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(244,63,94,0.2)] hover:-translate-y-0.5"
             >
                {/* <Cpu className="w-3 h-3 mr-2" /> */}
-               INITIATE PROJECT
+               GET IN TOUCH
             </Link>
           </div>
 
@@ -220,7 +220,7 @@ export function Header() {
                   className="w-full flex items-center justify-center p-4 bg-primary text-primary-foreground font-black text-[10px] uppercase tracking-[0.2em] shadow-lg shadow-primary/20 hover:bg-primary/90 transition-colors"
                 >
                   <Cpu className="w-3 h-3 mr-2" />
-                  INITIATE PROJECT
+                  GET IN TOUCH
                 </Link>
               </div>
             </motion.div>
