@@ -8,6 +8,7 @@ import { StatsMetrics } from "@/components/landing/StatsMetrics";
 import { ProcessTimeline } from "@/components/landing/ProcessTimeline";
 import { ProjectsShowcase } from "@/components/landing/ProjectsShowcase";
 import { FAQ } from "@/components/landing/FAQ";
+import { ClientShowcase } from "@/components/landing/ClientShowcase";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <ProjectsShowcase />
       <Testimonials />
       <FAQ />
+      <ClientShowcase />
       <CallToAction />
     </main>
   );
