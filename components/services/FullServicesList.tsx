@@ -194,42 +194,44 @@ export function FullServicesList() {
               viewport={{ once: true }}
               className="group relative industrial-border bg-card p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 min-h-[480px]"
             >
-              {/* Card Header Profile */}
-              <div className="relative z-10 flex justify-between items-start mb-12">
-                 <div className="p-3 rounded-full bg-primary/5 border border-primary/10 transition-colors group-hover:bg-primary/10">
-                    <category.icon className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
-                 </div>
-                 <div className="flex items-center gap-2 text-[10px] font-display font-black uppercase tracking-[0.25em] text-foreground/70">
-                    <Zap className="w-3 h-3 text-primary" />
-                    {category.accentText}
-                 </div>
-              </div>
+              <div className="flex flex-col flex-grow">
+                {/* Card Header Profile */}
+                <div className="relative z-10 flex justify-between items-start mb-6">
+                   <div className="p-3 rounded-full bg-primary/5 border border-primary/10 transition-colors group-hover:bg-primary/10">
+                      <category.icon className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
+                   </div>
+                   <div className="flex items-center gap-2 text-[10px] font-display font-black uppercase tracking-[0.25em] text-foreground/70">
+                      <Zap className="w-3 h-3 text-primary" />
+                      {category.accentText}
+                   </div>
+                </div>
 
-              {/* Main Content */}
-              <div className="relative z-10 space-y-6">
-                <h2 className="text-2xl md:text-3xl font-black tracking-tighter uppercase leading-[1.1] mb-6 text-foreground group-hover:text-primary transition-colors">
-                  {category.title}
-                </h2>
-                
-                <p className="text-muted-foreground text-sm font-semibold leading-relaxed max-w-[280px]">
-                  {category.description}
-                </p>
+                {/* Main Content */}
+                <div className="relative z-10 space-y-4">
+                  <h2 className="text-2xl md:text-3xl font-black tracking-tighter uppercase leading-[1.1] text-foreground group-hover:text-primary transition-colors">
+                    {category.title}
+                  </h2>
+                  
+                  <p className="text-muted-foreground text-sm font-semibold leading-relaxed">
+                    {category.description}
+                  </p>
 
-                <div className="space-y-3 pt-6">
-                  <p className="text-[9px] font-black uppercase tracking-[0.3em] text-primary/60">Key Highlights</p>
-                  <ul className="space-y-3">
-                    {category.services.map((service, idx) => (
-                      <li key={idx} className="flex items-center gap-3 text-[10px] font-display font-bold uppercase tracking-wider text-foreground/80">
-                        <Plus className="w-3 h-3 text-primary flex-shrink-0" />
-                        {service}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="space-y-3 pt-4">
+                    <p className="text-[9px] font-black uppercase tracking-[0.3em] text-primary/60">Key Highlights</p>
+                    <ul className="space-y-3">
+                      {category.services.map((service, idx) => (
+                        <li key={idx} className="flex items-center gap-3 text-[10px] font-display font-bold uppercase tracking-wider text-foreground/80">
+                          <Plus className="w-3 h-3 text-primary flex-shrink-0" />
+                          {service}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
 
               {/* Card Footer Action */}
-              <div className="relative z-10 mt-12 pt-8 border-t border-border/50">
+              <div className="relative z-10 mt-auto pt-8 border-t border-border/50">
                  <motion.a 
                     href="/contact"
                     className="inline-flex items-center gap-4 text-xs font-black uppercase tracking-[0.3em] text-foreground hover:text-primary transition-all group/link"

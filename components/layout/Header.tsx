@@ -13,7 +13,6 @@ const navLinks = [
   { name: "ABOUT", href: "/about" },
   { name: "SERVICES", href: "/services" },
   { name: "PRODUCTS", href: "/products" },
-  
   { name: "CONTACT", href: "/contact" },
 ]
 
@@ -58,12 +57,12 @@ export function Header() {
                 <Image
                   src="/images/BhattSqureLogo2.png"
                   alt="Bhatt Square Logo"
-                  width={34}
-                  height={34}
+                  width={50}
+                  height={50}
                   className="object-contain"
                 />
               </div>
-              <div className="ml-3 sm:ml-4 block border-l border-border/40 pl-3">
+              <div className="ml-3 sm:ml-4 block border-l border-border/40 pl-0">
                 <span className="text-xl sm:text-2xl font-display font-black tracking-tighter text-foreground group-hover:text-primary transition-colors leading-[0.8] block uppercase">
                   BHATT<span className="text-primary group-hover:text-foreground">SQUARE</span>
                 </span>

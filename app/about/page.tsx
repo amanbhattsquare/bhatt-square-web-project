@@ -44,28 +44,16 @@ const achievements = [
 const founders = [
   {
     name: "Akshat Bhatt",
-    role: "Managing Director",
-    avatar: "/images/Akshat-Bhatt.png",
+    role: "CEO & Director",
+    avatar: "/images/akshatbhatt.png",
     description: "As the Managing Director, Akshat drives the company's strategic vision, focusing on innovation and scalable solutions. His leadership ensures that Bhatt Square stays at the forefront of the industry, delivering exceptional value to clients."
   },
   {
     name: "Niraj Bhatt",
     role: "Director",
-    avatar: "/images/Niraj-Bhatt.png",
+    avatar: "/images/nirajbhatt.png",
     description: "Niraj plays a key role in shaping the company's operational strategies. His expertise in management and execution helps streamline processes, ensuring efficiency and excellence across all projects."
   },
-  {
-    name: "Pooja Bhatt",
-    role: "Director",
-    avatar: "/images/Pooja-Bhatt.png",
-    description: "Pooja's focus is on fostering a culture of innovation and collaboration. She is instrumental in guiding the team towards achieving technical excellence and maintaining strong client relationships."
-  },
-  {
-    name: "Anandi Bhatt",
-    role: "Director",
-    avatar: "/images/Anandi-Bhatt.png",
-    description: "Anandi contributes to the company's growth by overseeing key business development initiatives. Her strategic insights help identify new opportunities and drive the company's expansion."
-  }
 ];
 
 function AboutPageContent() {
@@ -286,7 +274,7 @@ function AboutPageContent() {
             <div className="relative">
               <div className="aspect-square lg:aspect-[4/3] bg-gradient-to-br from-primary/10 via-indigo-500/10 to-rose-500/10 rounded-3xl overflow-hidden relative border border-border">
                 <img
-                  src="/images/Akshat-Bhatt.png"
+                  src="/images/akshatbhatt-ceo.png"
                   alt="CEO"
                   className="absolute inset-0 w-full h-full object-contain"
                 />
@@ -309,7 +297,7 @@ function AboutPageContent() {
               </div>
               <div className="pt-6 border-t border-border">
                 <h3 className="text-xl font-bold text-foreground">Akshat Bhatt</h3>
-                <p className="text-sm text-muted-foreground">CEO & Founder, Bhatt Square Pvt Ltd.</p>
+                <p className="text-sm text-muted-foreground">CEO & Director</p>
               </div>
             </div>
           </div>
@@ -336,12 +324,23 @@ function AboutPageContent() {
                 className="team-card group relative flex flex-col p-6 industrial-border bg-card overflow-hidden transition-all duration-400 hover:shadow-2xl hover:shadow-primary/5"
               >
                 <div className="absolute inset-0 dot-grid opacity-30 group-hover:opacity-50 transition-opacity" />
-                <div className="relative z-10">
-                  <h3 className="text-xl font-display font-black tracking-tighter uppercase text-foreground group-hover:text-primary transition-colors">
-                    {founder.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground font-medium mb-4">{founder.role}</p>
-                  <p className="text-muted-foreground leading-relaxed text-sm mb-4">
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex items-center gap-6 mb-6">
+                    <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-primary/20 group-hover:border-primary transition-all duration-500 shrink-0">
+                      <img 
+                        src={founder.avatar} 
+                        alt={founder.name} 
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-display font-black tracking-tighter uppercase text-foreground group-hover:text-primary transition-colors">
+                        {founder.name}
+                      </h3>
+                      <p className="text-sm text-primary font-medium">{founder.role}</p>
+                    </div>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed text-sm flex-grow">
                     {founder.description}
                   </p>
                 </div>

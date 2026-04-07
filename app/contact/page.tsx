@@ -8,8 +8,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: "EMAIL",
-    value: "Support@bhattsquare.com",
-    href: "mailto:Support@bhattsquare.com",
+    value: "support@bhattsquare.com",
+    href: "mailto:support@bhattsquare.com",
   },
   {
     icon: Phone,
@@ -20,7 +20,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "HEADQUARTERS",
-    value: "1/Vishesh Khand, Gomti Nagar, Lucknow UP-226010",
+    value: "1/4, Vishesh khand, gomti nagar, lucknow",
   },
   {
     icon: Clock,

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { Code2, Cpu, Database, Globe, Layers, Layout, Server, Smartphone } from "lucide-react"
 
-const techRow1 = [
+const baseTechRow1 = [
   { name: "React", icon: Code2 },
   { name: "Next.js", icon: Globe },
   { name: "TypeScript", icon: Code2 },
@@ -12,8 +12,10 @@ const techRow1 = [
   { name: "Framer Motion", icon: Layers },
   { name: "GSAP", icon: Layers },
 ]
+// Duplicate multiple times to ensure enough width for seamless looping on ultra-wide screens
+const techRow1 = [...baseTechRow1, ...baseTechRow1, ...baseTechRow1, ...baseTechRow1, ...baseTechRow1]
 
-const techRow2 = [
+const baseTechRow2 = [
   { name: "Node.js", icon: Server },
   { name: "PostgreSQL", icon: Database },
   { name: "Docker", icon: Cpu },
@@ -21,6 +23,7 @@ const techRow2 = [
   { name: "GraphQL", icon: Database },
   { name: "MongoDB", icon: Database },
 ]
+const techRow2 = [...baseTechRow2, ...baseTechRow2, ...baseTechRow2, ...baseTechRow2, ...baseTechRow2]
 
 // Lucide doesn't have Cloud, so let's import it or use Server
 import { Cloud } from "lucide-react"
@@ -43,7 +46,7 @@ export function TechStackMarquee() {
         gsap.to(container1.querySelectorAll(".marquee-content"), {
           xPercent: -100,
           repeat: -1,
-          duration: 40,
+          duration: 200,
           ease: "linear",
         })
       }
@@ -56,7 +59,7 @@ export function TechStackMarquee() {
         container2.appendChild(clone2)
         gsap.fromTo(container2.querySelectorAll(".marquee-content"), 
           { xPercent: -100 },
-          { xPercent: 0, repeat: -1, duration: 50, ease: "linear" }
+          { xPercent: 0, repeat: -1, duration: 250, ease: "linear" }
         )
       }
     })
@@ -85,12 +88,12 @@ export function TechStackMarquee() {
       
       <div className="space-y-8 relative">
         {/* Gradient Masks */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
 
         {/* Row 1 */}
-        <div ref={row1Ref} className="flex relative overflow-hidden select-none">
-          <div className="marquee-content flex shrink-0 gap-4 px-2">
+        <div ref={row1Ref} className="flex relative overflow-hidden select-none gap-4">
+          <div className="marquee-content flex shrink-0 gap-4">
             {techRow1.map((tech, index) => (
               <TechBadge key={index} name={tech.name} icon={tech.icon} />
             ))}
@@ -98,8 +101,8 @@ export function TechStackMarquee() {
         </div>
 
         {/* Row 2 */}
-        <div ref={row2Ref} className="flex relative overflow-hidden select-none">
-          <div className="marquee-content flex shrink-0 gap-4 px-2">
+        <div ref={row2Ref} className="flex relative overflow-hidden select-none gap-4">
+          <div className="marquee-content flex shrink-0 gap-4">
              {techRow2.map((tech, index) => (
               <TechBadge key={index} name={tech.name} icon={tech.icon} />
              ))}
