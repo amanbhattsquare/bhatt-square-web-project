@@ -65,10 +65,10 @@ export function ContactForm() {
 
       try {
         await emailjs.send(
-          'service_9jk7iye', // Yahan apna Service ID daalein
-          'template_n9m2bpo', // Yahan naye contact template ki ID daalein
+          'service_9jk7iye', // Service ID 
+          'template_n9m2bpo', // contact template  ID 
           templateParams,
-          'BkZhcVM_mZX_W_8Qr' // Yahan apna Public Key daalein
+          'BkZhcVM_mZX_W_8Qr' //  Public Key 
         );
 
         setSubmitStatus('success');

@@ -9,7 +9,7 @@ const projects = [
   {
     title: "FitStack - GYM Management Software",
     description: "An enterprise-grade solution engineered to streamline fitness center operations. This comprehensive platform features automated billing, intuitive class scheduling, and robust trainer management.",
-    image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&h=600&fit=crop",
+    image: "/images/projects/fitstack-showcase.jpg",
     tags: ["Python", "Django", "PostgreSQL"],
     link: "https://fitstack.nextgenapplication.com/",
     status: "LIVE"
@@ -17,7 +17,7 @@ const projects = [
   {
     title: "mydbs - Business Management Software",
     description: "A unified, all-in-one platform designed to scale with your business. It integrates CRM, agile project management, and real-time financial tracking.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+    image: "/images/projects/mydbs-showcase.jpg",
     tags: ["Next.js", "Stripe", "MongoDB"],
     link: "https://mydbs.nextgenapplication.com/",
     status: "LIVE"
@@ -25,7 +25,7 @@ const projects = [
   {
     title: "Mediamuni - Social Media Growth Platform",
     description: "A revolutionary platform that empowers influencers and brands to achieve exponential growth through advanced analytics and monetization tools.",
-    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&h=600&fit=crop",
+    image: "/images/projects/mediamuni-showcase.jpg",
     tags: ["TypeScript", "AWS", "GraphQL"],
     link: "https://mediamuni.com/",
     status: "LIVE"
@@ -33,7 +33,7 @@ const projects = [
   {
     title: "E-Commerce Platform",
     description: "A feature-rich online store with seamless checkout, inventory management, and secure payment integration designed to maximize sales.",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
+    image: "/images/projects/ecommerce-showcase.jpg",
     tags: ["Next.js", "Redux", "Stripe"],
     link: "/products",
     status: "SHIPPED"

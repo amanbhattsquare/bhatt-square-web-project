@@ -30,84 +30,93 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const products = [
   {
     icon: Dumbbell,
-    title: "GYM Management Software",
+    title: "FitStack - GYM Management Software",
     description: "A comprehensive solution to manage your fitness center, from member billing to class scheduling and trainer management.",
-    image: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=800&h=600&fit=crop",
+    image: "/images/products/fitstack.jpg",
     tags: ["Fitness", "SaaS", "ERP"],
     status: "v2.8.4 Stable",
-    features: ["Member Fingerprint/RF ID Integration", "Automated Billing & GST Support", "Mobile App for Members"]
+    features: ["Member Fingerprint/RF ID Integration", "Automated Billing & GST Support", "Mobile App for Members"],
+    link: "https://fitstack.nextgenapplication.com/"
   },
   {
     icon: Briefcase,
     title: "Business Management Software",
     description: "An all-in-one platform to streamline your business operations, including CRM, project management, and financial tracking.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop",
+    image: "/images/products/business-mgmt.jpg",
     tags: ["Business", "CRM", "Efficiency"],
     status: "v3.1.0 Enterprise",
-    features: ["Multi-Branch Resource Sync", "Real-time Financial Dashboards", "Strategic Resource Planning"]
+    features: ["Multi-Branch Resource Sync", "Real-time Financial Dashboards", "Strategic Resource Planning"],
+    link: "https://storepilot.nextgenapplication.com/"
   },
   {
     icon: Users,
     title: "Social Media Growth Platform",
     description: "A unique platform designed to boost your social media presence and create new earning opportunities for influencers.",
-    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&h=600&fit=crop",
+    image: "/images/products/social-growth.jpg",
     tags: ["Social", "Growth", "Influencer"],
     status: "v1.2.0 Active",
-    features: ["Influencer Matching Engine", "Performance-Based Payouts", "Global Audience Analytics"]
+    features: ["Influencer Matching Engine", "Performance-Based Payouts", "Global Audience Analytics"],
+    link: "https://mediamuni.com"
   },
   {
     icon: TrendingUp,
     title: "Crypto Market Analysis Tool",
     description: "Stay ahead of the market with our advanced crypto analysis tool, offering real-time data and trend prediction.",
-    image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=800&h=600&fit=crop",
+    image: "/images/products/crypto-analysis.jpg",
     tags: ["Crypto", "Analysis", "Data"],
     status: "v4.0.0 Pro",
-    features: ["Neural Trend Prediction", "Zero-Latency Order Book", "DeFi Liquidity Mapping"]
+    features: ["Neural Trend Prediction", "Zero-Latency Order Book", "DeFi Liquidity Mapping"],
+    link: "https://algo52.com/"
   },
   {
     icon: ShoppingCart,
     title: "E-commerce Platform",
     description: "A scalable and customizable e-commerce solution to build and grow your online store with payment integration.",
-    image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop",
+    image: "/images/products/ecommerce.jpg",
     tags: ["E-commerce", "Retail", "Scale"],
     status: "v5.2.0 Enterprise",
-    features: ["Headless Commerce Architecture", "Omnichannel Inventory Management", "AI-Powered Recommender"]
+    features: ["Headless Commerce Architecture", "Omnichannel Inventory Management", "AI-Powered Recommender"],
+    link: "https://mydbs.nextgenapplication.com/"
   },
   {
     icon: BrainCircuit,
     title: "AI Content Creation Tool",
     description: "Leverage artificial intelligence to generate high-quality marketing copy and blog posts in seconds.",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
+    image: "/images/products/ai-content.jpg",
     tags: ["AI", "Content", "Automation"],
     status: "v2.0.0 Alpha",
-    features: ["LLM-Powered Copywriting", "Contextual Brand Voice Tone", "Multi-Language SEO Exports"]
+    features: ["LLM-Powered Copywriting", "Contextual Brand Voice Tone", "Multi-Language SEO Exports"],
+    link: "#"
   },
   {
     icon: Building,
     title: "Custom ERP Solutions",
     description: "Tailor-made Enterprise Resource Planning systems to integrate and manage your core business processes.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+    image: "/images/products/custom-erp.jpg",
     tags: ["Enterprise", "ERP", "Custom"],
     status: "Industrial Core",
-    features: ["Legacy Data Migration Services", "IoT Hardware Sync Core", "Regulatory Compliance Module"]
+    features: ["Legacy Data Migration Services", "IoT Hardware Sync Core", "Regulatory Compliance Module"],
+    link: "#"
   },
   {
     icon: GraduationCap,
     title: "Online Learning Platform",
     description: "Create, market, and sell online courses with our feature-rich Learning Management System.",
-    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&h=600&fit=crop",
+    image: "/images/products/online-learning.jpg",
     tags: ["Education", "LMS", "E-learning"],
     status: "v3.5.0 Stable",
-    features: ["Interactive Certification Engine", "Gamified Learning Pathways", "Advanced Student Progress Tracker"]
+    features: ["Interactive Certification Engine", "Gamified Learning Pathways", "Advanced Student Progress Tracker"],
+    link: "#"
   },
   {
     icon: Home,
     title: "Real Estate Management",
     description: "A complete tool for real estate agencies to manage listings, track leads, and automate sales workflows.",
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
+    image: "/images/products/real-estate.jpg",
     tags: ["PropTech", "Leads", "CRM"],
     status: "v2.1.0 Active",
-    features: ["Automated Property Lead Feed", "Virtual Tour Embedding", "Legal Document Generation"]
+    features: ["Automated Property Lead Feed", "Virtual Tour Embedding", "Legal Document Generation"],
+    link: "#"
   },
 ];
 
@@ -207,7 +216,9 @@ export default function ProductsPage() {
                     
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <a 
-                          href="#" 
+                          href={product.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="px-5 py-2.5 bg-background/90 backdrop-blur-md border border-primary/20 text-[10px] font-display font-black uppercase tracking-[0.3em] text-primary hover:bg-primary hover:text-white transition-all flex items-center gap-3 shadow-xl"
                         >
                             VIEW PROJECT
@@ -259,7 +270,9 @@ export default function ProductsPage() {
 
                 <div className="relative z-10 mt-10 pt-8 border-t border-border/50">
                    <a 
-                      href="#"
+                      href={product.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-4 text-xs font-display font-black uppercase tracking-[0.3em] text-foreground hover:text-primary transition-all group/link"
                     >
                       EXPLORE SOLUTION

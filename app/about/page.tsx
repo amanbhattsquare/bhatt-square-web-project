@@ -208,7 +208,7 @@ function AboutPageContent() {
             <div className="relative">
               <div className="aspect-square lg:aspect-[4/3] bg-gradient-to-br from-primary/10 via-indigo-500/10 to-rose-500/10 rounded-3xl overflow-hidden relative border border-border">
                 <img
-                  src="https://images.pexels.com/photos/7652039/pexels-photo-7652039.jpeg"
+                  src="/images/global-impact.jpg"
                   alt="Global Impact"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
